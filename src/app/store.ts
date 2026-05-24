@@ -19,6 +19,14 @@ import type {
 } from '@/types'
 import { defaultDiveContext } from '@/types'
 
+function normalizeDiveContext(raw?: Partial<DiveContext>): DiveContext {
+  return {
+    ...defaultDiveContext(),
+    ...raw,
+    rentalGear: raw?.rentalGear ?? false,
+  }
+}
+
 interface AppState {
   hydrated: boolean
   locale: Locale
@@ -34,6 +42,7 @@ interface AppState {
   setContext: (context: Partial<DiveContext>) => void
   generateChecklist: () => void
   toggleItem: (itemId: string) => void
+  setRentalSectionHidden: (hidden: boolean) => void
   resetChecklist: () => void
   completeBuddyStep: (stepId: string) => void
   resetBuddyCheck: () => void
@@ -66,7 +75,10 @@ function relocalizeChecklist(
   const completedIds = new Set(
     checklist.items.filter((item) => item.completed).map((item) => item.id),
   )
-  return buildChecklist(checklist.context, locale, completedIds)
+  return {
+    ...buildChecklist(checklist.context, locale, completedIds),
+    rentalSectionHidden: checklist.rentalSectionHidden ?? false,
+  }
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -134,12 +146,26 @@ export const useAppStore = create<AppState>((set, get) => ({
     void saveStoredSession({ checklist: updated, buddyCheck })
   },
 
+  setRentalSectionHidden: (hidden) => {
+    const { checklist, buddyCheck } = get()
+    if (!checklist) return
+
+    const updated: ComposedChecklist = {
+      ...checklist,
+      rentalSectionHidden: hidden,
+    }
+
+    set({ checklist: updated })
+    void saveStoredSession({ checklist: updated, buddyCheck })
+  },
+
   resetChecklist: () => {
     const { checklist } = get()
     if (!checklist) return
 
     const reset: ComposedChecklist = {
       ...checklist,
+      rentalSectionHidden: false,
       items: checklist.items.map((item) => ({ ...item, completed: false })),
     }
 
@@ -220,7 +246,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       locale,
       sunlightMode,
       disclaimerAcceptedAt: prefs.disclaimerAcceptedAt,
-      context: prefs.lastContext ?? defaultDiveContext(),
+      context: normalizeDiveContext(prefs.lastContext),
     }
 
     if (session?.checklist) {

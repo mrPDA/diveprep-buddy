@@ -1,5 +1,6 @@
 import { useAppStore } from '@/app/store'
 import { Button } from '@/components/ui/Button'
+import { getVisibleChecklistItems } from '@/lib/checklist-display'
 import { useTranslation } from '@/i18n/useTranslation'
 
 export function SummaryScreen() {
@@ -8,9 +9,9 @@ export function SummaryScreen() {
   const startNewPreparation = useAppStore((s) => s.startNewPreparation)
   const { t } = useTranslation()
 
-  const completedCount =
-    checklist?.items.filter((i) => i.completed).length ?? 0
-  const totalCount = checklist?.items.length ?? 0
+  const visibleItems = checklist ? getVisibleChecklistItems(checklist) : []
+  const completedCount = visibleItems.filter((i) => i.completed).length
+  const totalCount = visibleItems.length
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center space-y-8 py-8 text-center">

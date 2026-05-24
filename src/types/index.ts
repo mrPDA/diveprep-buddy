@@ -7,6 +7,7 @@ export interface DiveContext {
   photography: boolean
   travel: boolean
   training: boolean
+  rentalGear: boolean
 }
 
 export const defaultDiveContext = (): DiveContext => ({
@@ -16,6 +17,7 @@ export const defaultDiveContext = (): DiveContext => ({
   photography: false,
   travel: false,
   training: false,
+  rentalGear: false,
 })
 
 export type ChecklistCategory =
@@ -48,6 +50,8 @@ export interface ComposedChecklist {
   context: DiveContext
   items: ChecklistItemState[]
   generatedAt: string
+  /** When true, rental inspection items are hidden from the checklist view. */
+  rentalSectionHidden?: boolean
 }
 
 export interface BuddyCheckStep {

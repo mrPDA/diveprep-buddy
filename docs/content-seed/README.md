@@ -14,6 +14,7 @@ Ready-to-copy templates for Phase 2. **Not runtime code yet** — copy to `src/c
 | `templates/photo.json` | `photography === true` |
 | `templates/travel.json` | `travel === true` |
 | `templates/training.json` | `training === true` |
+| `templates/rental.json` | `rentalGear === true` |
 | `buddy-check.json` | Buddy-check flow (fixed sequence) |
 
 ## Merge rules
@@ -27,6 +28,8 @@ Items marked for instructor review should be validated with real divers before p
 ## Example merged context
 
 Boat + cold + night → templates: `base`, `boat`, `cold-water`, `night`.
+
+Travel + rental (typical vacation diver) → templates: `base`, `boat`, `travel`, `rental`.
 
 ## Agent task
 

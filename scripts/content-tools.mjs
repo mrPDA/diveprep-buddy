@@ -26,6 +26,7 @@ const TEMPLATE_IDS = [
   'photo',
   'travel',
   'training',
+  'rental',
 ]
 
 function readJson(path) {

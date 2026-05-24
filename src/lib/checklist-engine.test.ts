@@ -5,6 +5,7 @@ import {
   resolveTemplateIds,
   withCompletionState,
 } from '@/lib/checklist-engine'
+import { defaultDiveContext } from '@/types'
 import type { ChecklistTemplate, DiveContext } from '@/types'
 
 const baseTemplate: ChecklistTemplate = {
@@ -31,10 +32,36 @@ const coldTemplate: ChecklistTemplate = {
   items: [{ id: 'hood', label: 'Hood', category: 'exposure' }],
 }
 
+const travelTemplate: ChecklistTemplate = {
+  id: 'travel',
+  name: 'Travel',
+  items: [{ id: 'passport', label: 'Passport', category: 'travel' }],
+}
+
+const rentalTemplate: ChecklistTemplate = {
+  id: 'rental',
+  name: 'Rental',
+  items: [
+    {
+      id: 'rental-mask-condition',
+      label: 'Mask condition',
+      category: 'core-gear',
+      critical: true,
+    },
+    {
+      id: 'rental-suit-condition',
+      label: 'Suit condition',
+      category: 'exposure',
+    },
+  ],
+}
+
 const templates = {
   base: baseTemplate,
   boat: boatTemplate,
   'cold-water': coldTemplate,
+  travel: travelTemplate,
+  rental: rentalTemplate,
 }
 
 function context(partial: Partial<DiveContext>): DiveContext {
@@ -45,9 +72,16 @@ function context(partial: Partial<DiveContext>): DiveContext {
     photography: false,
     travel: false,
     training: false,
+    rentalGear: false,
     ...partial,
   }
 }
+
+describe('defaultDiveContext', () => {
+  it('defaults rentalGear to false', () => {
+    expect(defaultDiveContext().rentalGear).toBe(false)
+  })
+})
 
 describe('resolveTemplateIds', () => {
   it('always includes base', () => {
@@ -60,6 +94,17 @@ describe('resolveTemplateIds', () => {
         context({ diveType: 'boat', coldWater: true, nightDive: true }),
       ),
     ).toEqual(['base', 'boat', 'cold-water', 'night'])
+  })
+
+  it('includes rental when rentalGear is true', () => {
+    expect(resolveTemplateIds(context({ rentalGear: true }))).toEqual([
+      'base',
+      'rental',
+    ])
+  })
+
+  it('omits rental when rentalGear is false', () => {
+    expect(resolveTemplateIds(context({ rentalGear: false }))).toEqual(['base'])
   })
 })
 
@@ -79,6 +124,39 @@ describe('composeChecklist', () => {
   it('skips missing templates without throwing', () => {
     const items = composeChecklist(context({ diveType: 'shore' }), templates)
     expect(items.length).toBe(2)
+  })
+
+  it('includes rental items when rentalGear is true and keeps base items', () => {
+    const items = composeChecklist(context({ rentalGear: true }), templates)
+    const ids = items.map((i) => i.id)
+    expect(ids).toContain('mask')
+    expect(ids).toContain('whistle')
+    expect(ids).toContain('rental-mask-condition')
+    expect(ids).toContain('rental-suit-condition')
+  })
+
+  it('excludes rental items when rentalGear is false', () => {
+    const items = composeChecklist(context({ rentalGear: false }), templates)
+    expect(items.some((i) => i.id.startsWith('rental-'))).toBe(false)
+  })
+
+  it('merges travel and rental templates without duplicate ids', () => {
+    const items = composeChecklist(
+      context({ travel: true, rentalGear: true }),
+      templates,
+    )
+    const ids = items.map((i) => i.id)
+    expect(ids).toContain('passport')
+    expect(ids).toContain('rental-mask-condition')
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('sorts critical rental items before non-critical within category order', () => {
+    const items = composeChecklist(context({ rentalGear: true }), templates)
+    const rentalItems = items.filter((i) => i.id.startsWith('rental-'))
+    expect(rentalItems[0]?.id).toBe('rental-mask-condition')
+    expect(rentalItems[0]?.critical).toBe(true)
+    expect(rentalItems[1]?.id).toBe('rental-suit-condition')
   })
 })
 

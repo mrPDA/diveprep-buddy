@@ -37,10 +37,32 @@ describe('content.bundle.json structure', () => {
       it('has core UI sections', () => {
         const ui = bundle.locales[locale].ui
         expect(ui.context).toBeDefined()
+        expect(ui.context.rentalGear).toBeTruthy()
+        expect(ui.context.rentalGearHint).toBeTruthy()
+        expect(ui.checklist.rentalSection.title).toBeTruthy()
+        expect(ui.checklist.rentalSection.hide).toBeTruthy()
         expect(ui.checklist).toBeDefined()
         expect(ui.buddyCheck).toBeDefined()
         expect(ui.summary).toBeDefined()
         expect(ui.disclaimer).toBeDefined()
+      })
+
+      it('has rental template with stable item ids', () => {
+        const rental = bundle.locales[locale].templates.rental
+        expect(rental.items).toHaveLength(10)
+        const ids = rental.items.map((item) => item.id)
+        expect(ids).toEqual([
+          'rental-mask-condition',
+          'rental-bcd-hold-air',
+          'rental-bcd-valves',
+          'rental-reg-first-stage',
+          'rental-reg-breathe',
+          'rental-spg-needle',
+          'rental-tank-visual',
+          'rental-suit-condition',
+          'rental-weights-condition',
+          'rental-computer-battery',
+        ])
       })
     })
   }
@@ -54,9 +76,27 @@ describe('content.bundle.json structure', () => {
         photography: false,
         travel: false,
         training: false,
+        rentalGear: false,
       },
       bundle.locales.en.templates as Record<string, ChecklistTemplate>,
     )
     expect(items.length).toBeGreaterThan(10)
+  })
+
+  it('adds rental items when rentalGear is enabled', () => {
+    const items = composeChecklist(
+      {
+        diveType: 'boat',
+        coldWater: false,
+        nightDive: false,
+        photography: false,
+        travel: false,
+        training: false,
+        rentalGear: true,
+      },
+      bundle.locales.en.templates as Record<string, ChecklistTemplate>,
+    )
+    expect(items.some((i) => i.id.startsWith('rental-'))).toBe(true)
+    expect(items.filter((i) => i.id.startsWith('rental-'))).toHaveLength(10)
   })
 })

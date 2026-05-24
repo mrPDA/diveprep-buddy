@@ -14,4 +14,5 @@ export const TEMPLATE_IDS = [
   'photo',
   'travel',
   'training',
+  'rental',
 ] as const

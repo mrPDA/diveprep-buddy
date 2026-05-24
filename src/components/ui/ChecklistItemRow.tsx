@@ -74,3 +74,56 @@ export function ChecklistCategorySection({
     </section>
   )
 }
+
+interface RentalChecklistSectionProps {
+  title: string
+  hideLabel: string
+  hidden: boolean
+  onHiddenChange: (hidden: boolean) => void
+  items: ChecklistItemState[]
+  onToggleItem: (itemId: string) => void
+}
+
+export function RentalChecklistSection({
+  title,
+  hideLabel,
+  hidden,
+  onHiddenChange,
+  items,
+  onToggleItem,
+}: RentalChecklistSectionProps) {
+  return (
+    <section className="space-y-2">
+      <h2 className="px-1 text-sm font-semibold uppercase tracking-wide text-sky-300">
+        {title}
+      </h2>
+      <label
+        className={[
+          'flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border px-3 py-3 transition-colors',
+          hidden
+            ? 'border-slate-600 bg-slate-800/50'
+            : 'border-sky-400/40 bg-sky-400/5',
+        ].join(' ')}
+      >
+        <input
+          type="checkbox"
+          checked={hidden}
+          onChange={(event) => onHiddenChange(event.target.checked)}
+          className="mt-1 h-5 w-5 shrink-0 rounded border-slate-500 bg-slate-900 text-sky-400 focus:ring-sky-400"
+        />
+        <span className="text-sm leading-snug text-slate-200">{hideLabel}</span>
+      </label>
+      {!hidden && (
+        <div className="space-y-2">
+          {items.map((item) => (
+            <ChecklistItemRow
+              key={item.id}
+              item={item}
+              onToggle={() => onToggleItem(item.id)}
+            />
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}

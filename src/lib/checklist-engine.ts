@@ -28,7 +28,13 @@ export function resolveTemplateIds(context: DiveContext): string[] {
   if (context.photography) ids.push('photo')
   if (context.travel) ids.push('travel')
   if (context.training) ids.push('training')
+  if (context.rentalGear) ids.push('rental')
   return ids
+}
+
+/** Item ids from the `rental` template (excludes travel template `rental-plan`). */
+export function isRentalChecklistItem(itemId: string): boolean {
+  return itemId.startsWith('rental-') && itemId !== 'rental-plan'
 }
 
 export function composeChecklist(

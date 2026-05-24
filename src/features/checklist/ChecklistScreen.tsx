@@ -4,9 +4,15 @@ import { Button } from '@/components/ui/Button'
 import {
   ChecklistCategorySection,
   ChecklistItemRow,
+  RentalChecklistSection,
 } from '@/components/ui/ChecklistItemRow'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { SafetyFooter } from '@/components/ui/DisclaimerBanner'
+import {
+  getRentalChecklistItems,
+  getVisibleChecklistItems,
+} from '@/lib/checklist-display'
+import { isRentalChecklistItem } from '@/lib/checklist-engine'
 import { useTranslation } from '@/i18n/useTranslation'
 import type { ChecklistCategory } from '@/types'
 
@@ -22,6 +28,7 @@ const CATEGORY_ORDER: ChecklistCategory[] = [
 export function ChecklistScreen() {
   const checklist = useAppStore((s) => s.checklist)
   const toggleItem = useAppStore((s) => s.toggleItem)
+  const setRentalSectionHidden = useAppStore((s) => s.setRentalSectionHidden)
   const resetChecklist = useAppStore((s) => s.resetChecklist)
   const setView = useAppStore((s) => s.setView)
   const startNewPreparation = useAppStore((s) => s.startNewPreparation)
@@ -45,15 +52,23 @@ export function ChecklistScreen() {
     )
   }
 
-  const completed = checklist.items.filter((i) => i.completed).length
-  const total = checklist.items.length
+  const rentalItems = getRentalChecklistItems(checklist.items)
+  const showRentalSection =
+    checklist.context.rentalGear && rentalItems.length > 0
+  const rentalHidden = checklist.rentalSectionHidden ?? false
+  const visibleItems = getVisibleChecklistItems(checklist)
+
+  const completed = visibleItems.filter((i) => i.completed).length
+  const total = visibleItems.length
   const allComplete = completed === total
 
   const grouped = CATEGORY_ORDER.reduce<
     Record<ChecklistCategory, typeof checklist.items>
   >(
     (acc, cat) => {
-      acc[cat] = checklist.items.filter((item) => item.category === cat)
+      acc[cat] = checklist.items.filter(
+        (item) => item.category === cat && !isRentalChecklistItem(item.id),
+      )
       return acc
     },
     {} as Record<ChecklistCategory, typeof checklist.items>,
@@ -77,6 +92,17 @@ export function ChecklistScreen() {
       </header>
 
       <div className="space-y-6">
+        {showRentalSection && (
+          <RentalChecklistSection
+            title={t('checklist.rentalSection.title')}
+            hideLabel={t('checklist.rentalSection.hide')}
+            hidden={rentalHidden}
+            onHiddenChange={setRentalSectionHidden}
+            items={rentalItems}
+            onToggleItem={toggleItem}
+          />
+        )}
+
         {CATEGORY_ORDER.map((category) => {
           const items = grouped[category]
           if (items.length === 0) return null

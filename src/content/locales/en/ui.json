@@ -27,6 +27,8 @@
     "photography": "Photography",
     "travel": "Travel / Trip",
     "training": "Training Dive",
+    "rentalGear": "Rental Gear",
+    "rentalGearHint": "Renting any gear from a dive shop — adds wear and condition checks.",
     "generate": "Generate Checklist"
   },
   "checklist": {
@@ -49,6 +51,10 @@
       "camera": "Camera / Accessories",
       "travel": "Travel",
       "documents": "Documents / Extras"
+    },
+    "rentalSection": {
+      "title": "Rental gear inspection",
+      "hide": "Rental gear inspected — hide these checks"
     }
   },
   "buddyCheck": {

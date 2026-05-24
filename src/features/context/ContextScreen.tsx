@@ -70,6 +70,12 @@ export function ContextScreen() {
             active={context.training}
             onToggle={() => setContext({ training: !context.training })}
           />
+          <ToggleCard
+            label={t('context.rentalGear')}
+            hint={t('context.rentalGearHint')}
+            active={context.rentalGear}
+            onToggle={() => setContext({ rentalGear: !context.rentalGear })}
+          />
         </div>
       </section>
 

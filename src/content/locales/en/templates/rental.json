@@ -1,0 +1,68 @@
+{
+  "id": "rental",
+  "name": "Rental gear condition checks",
+  "items": [
+    {
+      "id": "rental-mask-condition",
+      "label": "Mask: silicone soft and intact, strap not perished, lens not deeply scratched",
+      "hint": "Dry suction test — place mask on face without strap, inhale through the nose; it should stay in place",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-bcd-hold-air",
+      "label": "BCD: inflate fully on the surface, pressure should hold ~30 seconds without audible hiss",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-bcd-valves",
+      "label": "BCD: inflator inflate / deflate buttons not sticky, every dump valve pulls open and reseals",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-reg-first-stage",
+      "label": "Regulator first stage: no green corrosion, no salt crust, hoses without cracks, bulges, or abrasion",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-reg-breathe",
+      "label": "Regulator: both second stages breathe smoothly — no wet breath, no free-flow, mouthpiece not torn",
+      "hint": "Pressurize the tank, breathe each second-stage on the surface, press the purge briefly",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-spg-needle",
+      "label": "SPG: needle moves smoothly, returns to ~0 with valve closed, reads tank pressure with valve open",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-tank-visual",
+      "label": "Tank: current visual inspection mark, no deep dents or heavy corrosion, valve turns smoothly",
+      "hint": "Inspection stamp is usually on the tank neck or shoulder",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "rental-suit-condition",
+      "label": "Exposure suit: no large tears, zippers run smoothly, seals intact, neoprene flexible (not stiff or perished)",
+      "category": "exposure"
+    },
+    {
+      "id": "rental-weights-condition",
+      "label": "Weights: belt buckle not corroded, integrated pockets release cleanly, total weight matches plan",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "rental-computer-battery",
+      "label": "Dive computer: battery indicator OK, screen readable in daylight, buttons respond",
+      "category": "safety",
+      "critical": true
+    }
+  ]
+}

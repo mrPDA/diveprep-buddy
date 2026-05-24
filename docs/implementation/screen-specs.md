@@ -38,6 +38,13 @@ Back navigation:
 | Photography | `photography` |
 | Travel / Trip | `travel` |
 | Training Dive | `training` |
+| Rental Gear | `rentalGear` |
+
+`Rental Gear` toggle:
+
+- **Position:** 6th toggle, immediately after `Training Dive`.
+- **Sub-label (shown only when toggle is ON):** `Renting any gear from a dive shop — adds wear and condition checks.`
+- When toggle is OFF, render only the title row (no hint, no extra vertical space).
 
 **Primary CTA:** `Generate Checklist` — disabled until dive type selected.
 

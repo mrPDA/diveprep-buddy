@@ -34,11 +34,19 @@ export function ContextCard({
 
 interface ToggleCardProps {
   label: string
+  hint?: string
   active: boolean
   onToggle: () => void
+  className?: string
 }
 
-export function ToggleCard({ label, active, onToggle }: ToggleCardProps) {
+export function ToggleCard({
+  label,
+  hint,
+  active,
+  onToggle,
+  className = '',
+}: ToggleCardProps) {
   return (
     <button
       type="button"
@@ -50,9 +58,15 @@ export function ToggleCard({ label, active, onToggle }: ToggleCardProps) {
         active
           ? 'border-sky-400 bg-sky-400/10 text-sky-300'
           : 'border-slate-600 bg-slate-800/50 text-slate-200 hover:border-slate-500',
+        className,
       ].join(' ')}
     >
-      {label}
+      <span className="block">{label}</span>
+      {active && hint ? (
+        <span className="mt-1 block text-sm font-normal text-slate-400 transition-opacity duration-200">
+          {hint}
+        </span>
+      ) : null}
     </button>
   )
 }
