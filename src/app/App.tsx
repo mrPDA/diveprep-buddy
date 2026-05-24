@@ -3,6 +3,7 @@ import { useAppStore } from '@/app/store'
 import { DisclaimerModal } from '@/components/ui/DisclaimerBanner'
 import { IconButton } from '@/components/ui/IconButton'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
+import { SunlightToggle } from '@/components/ui/SunlightToggle'
 import { OfflineIndicator } from '@/components/ui/OfflineIndicator'
 import { isAdminEnabled } from '@/lib/env'
 import { useContentStore } from '@/lib/content/store'
@@ -71,6 +72,7 @@ function AppShell() {
             <span className="text-lg text-slate-400">Buddy</span>
           </div>
           <div className="flex items-center gap-2">
+            <SunlightToggle />
             {isAdminEnabled && (
               <IconButton
                 label={t('admin.title')}

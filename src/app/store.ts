@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { applyDocumentLocale } from '@/i18n'
 import { DEFAULT_LOCALE, detectBrowserLocale, type Locale } from '@/i18n/types'
 import { composeChecklist, withCompletionState } from '@/lib/checklist-engine'
+import { applySunlightMode } from '@/lib/sunlight-theme'
 import { getBuddyCheckSteps, getChecklistTemplates } from '@/lib/templates'
 import {
   clearStoredSession,
@@ -26,8 +27,10 @@ interface AppState {
   checklist: ComposedChecklist | null
   buddyCheck: BuddyCheckSession
   disclaimerAcceptedAt: string | undefined
+  sunlightMode: boolean
   setView: (view: AppView) => void
   setLocale: (locale: Locale) => void
+  setSunlightMode: (enabled: boolean) => void
   setContext: (context: Partial<DiveContext>) => void
   generateChecklist: () => void
   toggleItem: (itemId: string) => void
@@ -74,8 +77,15 @@ export const useAppStore = create<AppState>((set, get) => ({
   checklist: null,
   buddyCheck: emptyBuddyCheck(),
   disclaimerAcceptedAt: undefined,
+  sunlightMode: false,
 
   setView: (view) => set({ view }),
+
+  setSunlightMode: (enabled) => {
+    applySunlightMode(enabled)
+    set({ sunlightMode: enabled })
+    void savePreferences({ sunlightMode: enabled })
+  },
 
   setLocale: (locale) => {
     const { checklist, buddyCheck } = get()
@@ -201,11 +211,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     ])
 
     const locale = prefs.locale ?? detectBrowserLocale()
+    const sunlightMode = prefs.sunlightMode ?? false
     applyDocumentLocale(locale)
+    applySunlightMode(sunlightMode)
 
     const base = {
       hydrated: true,
       locale,
+      sunlightMode,
       disclaimerAcceptedAt: prefs.disclaimerAcceptedAt,
       context: prefs.lastContext ?? defaultDiveContext(),
     }

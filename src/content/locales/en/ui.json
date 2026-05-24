@@ -5,6 +5,10 @@
   "language": {
     "label": "Language"
   },
+  "sunlight": {
+    "on": "Sunlight mode — high contrast for bright sun",
+    "off": "Normal mode — turn off sunlight mode"
+  },
   "context": {
     "title": "What kind of dive are you preparing for?",
     "subtitle": "Choose your dive type and any modifiers to build your checklist.",

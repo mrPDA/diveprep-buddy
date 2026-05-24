@@ -1,8 +1,27 @@
 {
-  "name": "diveprep-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "diveprep-buddy",
+  "version": "0.1.0",
+  "description": "Pre-dive preparation PWA: context → checklist → buddy-check → summary. Offline-first, no backend.",
+  "license": "MIT",
   "type": "module",
+  "homepage": "https://diveprep-buddy.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrPDA/diveprep-buddy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrPDA/diveprep-buddy/issues"
+  },
+  "keywords": [
+    "pwa",
+    "scuba-diving",
+    "checklist",
+    "offline-first",
+    "react",
+    "vite",
+    "typescript",
+    "indexeddb"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -34,6 +53,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
     "tailwindcss": "^4.3.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",

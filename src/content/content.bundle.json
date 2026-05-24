@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-24T20:23:22.594Z",
+  "updatedAt": "2026-05-24T21:51:34.406Z",
   "appMeta": {
     "name": "DivePrep Buddy",
     "shortName": "DivePrep",
@@ -29,6 +29,10 @@
         },
         "language": {
           "label": "Language"
+        },
+        "sunlight": {
+          "on": "Sunlight mode — high contrast for bright sun",
+          "off": "Normal mode — turn off sunlight mode"
         },
         "context": {
           "title": "What kind of dive are you preparing for?",
@@ -518,6 +522,10 @@
         },
         "language": {
           "label": "Язык"
+        },
+        "sunlight": {
+          "on": "Режим солнца — высокий контраст для яркого света",
+          "off": "Обычный режим — выключить режим солнца"
         },
         "context": {
           "title": "К какому погружению вы готовитесь?",

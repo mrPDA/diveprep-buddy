@@ -71,6 +71,7 @@ export interface UserPreferences {
   disclaimerAcceptedAt?: string
   lastContext?: DiveContext
   locale?: Locale
+  sunlightMode?: boolean
 }
 
 export interface StoredSession {

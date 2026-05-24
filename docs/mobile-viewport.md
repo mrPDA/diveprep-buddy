@@ -72,7 +72,7 @@ AdminScreen: fixed bottom bar + extra main pb for scroll clearance
 
 | Constraint | Implication |
 | --- | --- |
-| Bright sun | High contrast; avoid low-contrast grey on grey |
+| Bright sun | High contrast; avoid low-contrast grey on grey — use **Sunlight mode** toggle (header ☀️) |
 | Wet / gloves | Large tap targets; spacing between toggles |
 | Hurry | One primary CTA per screen; no dense grids |
 | One hand | Primary actions in thumb zone (bottom half); avoid top-only controls |
