@@ -10,6 +10,7 @@ import {
   humanizePath,
   setNestedString,
 } from '@/lib/content/paths'
+import { isContentStudio } from '@/lib/env'
 import { useContentStore } from '@/lib/content/store'
 import type { ContentBundle } from '@/lib/content/types'
 import { useTranslation } from '@/i18n/useTranslation'
@@ -74,6 +75,9 @@ export function AdminScreen() {
     await saveBundle(next)
     document.title = next.appMeta.name
     refreshChecklist()
+    if (isContentStudio) {
+      downloadContentBundle(next, 'content.bundle.json')
+    }
     setSaveState('saved')
     setTimeout(() => setSaveState('idle'), 2000)
   }
@@ -117,6 +121,14 @@ export function AdminScreen() {
         <p className="text-xs text-slate-500">
           {isCustomized ? t('admin.customized') : t('admin.defaults')}
         </p>
+        {isContentStudio && (
+          <div className="rounded-xl border border-sky-400/30 bg-sky-400/10 p-3 text-sm text-sky-100">
+            <p>{t('admin.studioHint')}</p>
+            <code className="mt-2 block overflow-x-auto text-xs text-sky-200">
+              {t('admin.studioCommand')}
+            </code>
+          </div>
+        )}
       </header>
 
       <div className="mb-4 grid grid-cols-2 gap-2">
@@ -375,7 +387,7 @@ export function AdminScreen() {
             {saveState === 'saved' ? t('admin.saved') : t('admin.save')}
           </Button>
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="secondary" onClick={() => downloadContentBundle(draft)}>
+            <Button variant="secondary" onClick={() => downloadContentBundle(draft, 'content.bundle.json')}>
               {t('admin.export')}
             </Button>
             <Button variant="secondary" onClick={() => importRef.current?.click()}>

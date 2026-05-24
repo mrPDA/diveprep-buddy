@@ -1,15 +1,27 @@
-import localesConfig from '@/content/locales.config.json'
+import { getDefaultContentBundle } from '@/lib/content/defaults'
 
 export type Locale = 'en' | 'ru'
 
-export const DEFAULT_LOCALE = localesConfig.default as Locale
+const fallbackConfig = {
+  default: 'en' as Locale,
+  supported: [
+    { code: 'en' as Locale, label: 'English' },
+    { code: 'ru' as Locale, label: 'Русский' },
+  ],
+}
 
-export const SUPPORTED_LOCALES = localesConfig.supported.map(
+function getLocalesConfig() {
+  return getDefaultContentBundle().localesConfig ?? fallbackConfig
+}
+
+export const DEFAULT_LOCALE = getLocalesConfig().default
+
+export const SUPPORTED_LOCALES = getLocalesConfig().supported.map(
   (entry) => entry.code,
 ) as Locale[]
 
 export const LOCALE_LABELS = Object.fromEntries(
-  localesConfig.supported.map((entry) => [entry.code, entry.label]),
+  getLocalesConfig().supported.map((entry) => [entry.code, entry.label]),
 ) as Record<Locale, string>
 
 export function isLocale(value: string): value is Locale {
@@ -19,8 +31,8 @@ export function isLocale(value: string): value is Locale {
 export function detectBrowserLocale(): Locale {
   if (typeof navigator === 'undefined') return DEFAULT_LOCALE
   const lang = navigator.language.toLowerCase()
-  for (const entry of localesConfig.supported) {
-    if (lang.startsWith(entry.code)) return entry.code as Locale
+  for (const entry of getLocalesConfig().supported) {
+    if (lang.startsWith(entry.code)) return entry.code
   }
   return DEFAULT_LOCALE
 }

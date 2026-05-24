@@ -2,11 +2,35 @@
   "id": "base",
   "name": "Базовый — каждое погружение",
   "items": [
-    { "id": "mask", "label": "Маска", "category": "core-gear", "critical": true },
-    { "id": "snorkel", "label": "Трубка", "category": "core-gear" },
-    { "id": "fins", "label": "Ласты", "category": "core-gear", "critical": true },
-    { "id": "bcd", "label": "BCD", "category": "core-gear", "critical": true },
-    { "id": "regulator", "label": "Регулятор", "category": "core-gear", "critical": true },
+    {
+      "id": "mask",
+      "label": "Маска",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "snorkel",
+      "label": "Трубка",
+      "category": "core-gear"
+    },
+    {
+      "id": "fins",
+      "label": "Ласты",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "bcd",
+      "label": "BCD",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "regulator",
+      "label": "Регулятор",
+      "category": "core-gear",
+      "critical": true
+    },
     {
       "id": "tank",
       "label": "Баллон — полный, правильная газовая смесь",
@@ -26,9 +50,21 @@
       "category": "safety",
       "critical": true
     },
-    { "id": "smb", "label": "SMB / буй маркер", "category": "safety" },
-    { "id": "whistle", "label": "Звуковой сигнал", "category": "safety" },
-    { "id": "cutting-tool", "label": "Резак", "category": "safety" },
+    {
+      "id": "smb",
+      "label": "SMB / буй маркер",
+      "category": "safety"
+    },
+    {
+      "id": "whistle",
+      "label": "Звуковой сигнал",
+      "category": "safety"
+    },
+    {
+      "id": "cutting-tool",
+      "label": "Резак",
+      "category": "safety"
+    },
     {
       "id": "wetsuit",
       "label": "Гидрокостюм / сухой костюм",

@@ -2,8 +2,17 @@
   "id": "cold-water",
   "name": "Дополнения — холодная вода",
   "items": [
-    { "id": "hood", "label": "Капюшон", "category": "exposure", "critical": true },
-    { "id": "gloves", "label": "Перчатки", "category": "exposure" },
+    {
+      "id": "hood",
+      "label": "Капюшон",
+      "category": "exposure",
+      "critical": true
+    },
+    {
+      "id": "gloves",
+      "label": "Перчатки",
+      "category": "exposure"
+    },
     {
       "id": "drysuit-undergarment",
       "label": "Поддевы / термослои под сухой костюм",

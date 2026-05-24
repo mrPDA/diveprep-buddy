@@ -22,7 +22,7 @@ npm run preview
 
 Production hosting: **Cloudflare Pages**. See [`docs/deploy.md`](docs/deploy.md).
 
-**Edit texts & translations:** [`src/content/README.md`](src/content/README.md)
+**Edit texts:** [`src/content/README.md`](src/content/README.md) — use `npm run content:studio`
 
 ```text
 Build command:  npm run build

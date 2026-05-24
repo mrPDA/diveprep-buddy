@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "content:assemble": "node scripts/content-tools.mjs assemble",
+    "content:sync": "node scripts/content-tools.mjs sync",
+    "content:apply": "node scripts/content-tools.mjs apply",
+    "content:studio": "VITE_CONTENT_STUDIO=true vite"
   },
   "dependencies": {
     "dexie": "^4.4.2",

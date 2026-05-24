@@ -19,6 +19,10 @@ export interface ContentBundle {
   version: number
   updatedAt?: string
   appMeta: AppMeta
+  localesConfig?: {
+    default: Locale
+    supported: Array<{ code: Locale; label: string }>
+  }
   locales: Record<Locale, LocaleContent>
 }
 

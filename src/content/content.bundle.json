@@ -1,0 +1,1004 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-24T20:23:22.594Z",
+  "appMeta": {
+    "name": "DivePrep Buddy",
+    "shortName": "DivePrep",
+    "description": "Pre-dive preparation checklists",
+    "themeColor": "#0f172a",
+    "backgroundColor": "#0f172a"
+  },
+  "localesConfig": {
+    "default": "en",
+    "supported": [
+      {
+        "code": "en",
+        "label": "English"
+      },
+      {
+        "code": "ru",
+        "label": "Русский"
+      }
+    ]
+  },
+  "locales": {
+    "en": {
+      "ui": {
+        "app": {
+          "loading": "Loading…"
+        },
+        "language": {
+          "label": "Language"
+        },
+        "context": {
+          "title": "What kind of dive are you preparing for?",
+          "subtitle": "Choose your dive type and any modifiers to build your checklist.",
+          "diveType": "Dive type",
+          "modifiers": "Modifiers",
+          "boat": {
+            "label": "Boat Dive",
+            "description": "Boat entry, surface interval on board"
+          },
+          "shore": {
+            "label": "Shore Dive",
+            "description": "Entry from shore or beach"
+          },
+          "nightDive": "Night Dive",
+          "coldWater": "Cold Water",
+          "photography": "Photography",
+          "travel": "Travel / Trip",
+          "training": "Training Dive",
+          "generate": "Generate Checklist"
+        },
+        "checklist": {
+          "title": "Your checklist",
+          "subtitle": "Tap each item as you pack and verify gear.",
+          "changeContext": "Change context",
+          "emptyTitle": "No checklist yet.",
+          "emptySubtitle": "Choose your dive context to generate a preparation checklist.",
+          "emptyAction": "Choose dive context",
+          "progress": "Progress",
+          "progressCount": "{{completed}} of {{total}} items",
+          "critical": "Critical",
+          "reset": "Reset checklist",
+          "startBuddyCheck": "Start Buddy Check",
+          "continueBuddyCheck": "Continue to Buddy Check",
+          "categories": {
+            "core-gear": "Core Gear",
+            "safety": "Safety",
+            "exposure": "Exposure Protection",
+            "camera": "Camera / Accessories",
+            "travel": "Travel",
+            "documents": "Documents / Extras"
+          }
+        },
+        "buddyCheck": {
+          "title": "Buddy Check",
+          "subtitle": "Verify each item physically with your buddy.",
+          "backToChecklist": "← Back to checklist",
+          "step": "Step {{current}} of {{total}}",
+          "next": "Next step",
+          "finish": "Finish",
+          "back": "Back"
+        },
+        "summary": {
+          "title": "Preparation reviewed",
+          "body": "Remember to verify all equipment physically before entering the water.",
+          "stats": "Checklist: {{completed}} of {{total}} items marked complete",
+          "newDive": "Prepare for another dive",
+          "reviewChecklist": "Review checklist"
+        },
+        "disclaimer": {
+          "title": "Before you start",
+          "p1": "DivePrep Buddy helps you organize pre-dive preparation.",
+          "p2": "It does not replace dive training, professional instruction, certified dive safety procedures, or a dive computer.",
+          "p3": "Always verify your equipment physically and follow your training.",
+          "accept": "I understand"
+        },
+        "safety": {
+          "footer": "Preparation assistant only — not a safety authority."
+        },
+        "offline": {
+          "banner": "Offline mode active. Your checklists still work on this device."
+        },
+        "admin": {
+          "title": "Content admin",
+          "subtitle": "Edit texts on this device. Export JSON to commit to the repo.",
+          "back": "← Back to app",
+          "tabs": {
+            "app": "App",
+            "ui": "Interface",
+            "buddy": "Buddy-check",
+            "templates": "Checklists"
+          },
+          "locale": "Editing language",
+          "customized": "Custom content active",
+          "defaults": "Using built-in defaults",
+          "save": "Save changes",
+          "saved": "Saved",
+          "reset": "Reset to defaults",
+          "export": "Export JSON",
+          "import": "Import JSON",
+          "importError": "Could not import file. Check JSON format.",
+          "resetConfirm": "Reset all custom content to built-in defaults?",
+          "appSection": "App name & PWA",
+          "uiSection": "Interface texts",
+          "buddySection": "Buddy-check steps",
+          "templateSection": "Checklist templates",
+          "selectTemplate": "Template",
+          "itemLabel": "Label",
+          "itemHint": "Hint (optional)",
+          "itemCategory": "Category",
+          "itemCritical": "Critical item",
+          "addItem": "Add item",
+          "removeItem": "Remove",
+          "stepTitle": "Title",
+          "stepPrompt": "Prompt",
+          "stepConfirm": "Confirm button",
+          "studioHint": "After editing: Export JSON, then in the project folder run:",
+          "studioCommand": "npm run content:apply -- ~/Downloads/content.bundle.json"
+        }
+      },
+      "buddyCheck": {
+        "version": 1,
+        "steps": [
+          {
+            "id": "bcd",
+            "title": "BCD",
+            "prompt": "Verify BCD fits and inflates/deflates correctly.",
+            "confirmLabel": "Checked"
+          },
+          {
+            "id": "weights",
+            "title": "Weights",
+            "prompt": "Verify weight amount and secure attachment.",
+            "confirmLabel": "Checked"
+          },
+          {
+            "id": "releases",
+            "title": "Releases",
+            "prompt": "Verify all releases — BCD, weight system, drysuit if applicable.",
+            "confirmLabel": "Checked"
+          },
+          {
+            "id": "air",
+            "title": "Air",
+            "prompt": "Verify air is on, tank is full, breathe from regulator.",
+            "confirmLabel": "Checked"
+          },
+          {
+            "id": "final-ok",
+            "title": "Final OK",
+            "prompt": "Complete final buddy review together before entering the water.",
+            "confirmLabel": "Ready"
+          }
+        ]
+      },
+      "templates": {
+        "base": {
+          "id": "base",
+          "name": "Base — every dive",
+          "items": [
+            {
+              "id": "mask",
+              "label": "Mask",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "snorkel",
+              "label": "Snorkel",
+              "category": "core-gear"
+            },
+            {
+              "id": "fins",
+              "label": "Fins",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "bcd",
+              "label": "BCD",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "regulator",
+              "label": "Regulator set",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "tank",
+              "label": "Tank — full, correct gas",
+              "hint": "Verify fill and gas type match your plan and training",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "weights",
+              "label": "Weights / weight system",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "computer",
+              "label": "Dive computer — charged",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "smb",
+              "label": "SMB / surface marker",
+              "category": "safety"
+            },
+            {
+              "id": "whistle",
+              "label": "Audible signaling device",
+              "category": "safety"
+            },
+            {
+              "id": "cutting-tool",
+              "label": "Cutting tool",
+              "category": "safety"
+            },
+            {
+              "id": "wetsuit",
+              "label": "Exposure suit (wetsuit/drysuit)",
+              "category": "exposure",
+              "critical": true
+            },
+            {
+              "id": "cert-card",
+              "label": "Certification card / proof",
+              "category": "documents"
+            },
+            {
+              "id": "insurance",
+              "label": "Dive insurance info (if applicable)",
+              "category": "documents"
+            }
+          ]
+        },
+        "boat": {
+          "id": "boat",
+          "name": "Boat dive add-ons",
+          "items": [
+            {
+              "id": "seasickness",
+              "label": "Seasickness remedy (if needed)",
+              "category": "travel"
+            },
+            {
+              "id": "dry-bag",
+              "label": "Dry bag for deck / spray",
+              "category": "core-gear"
+            },
+            {
+              "id": "boots",
+              "label": "Boots for boat deck",
+              "category": "exposure"
+            },
+            {
+              "id": "entry-plan",
+              "label": "Review boat entry / exit briefing",
+              "hint": "Listen to crew and note entry type",
+              "category": "safety"
+            },
+            {
+              "id": "point-of-no-return",
+              "label": "Note emergency contact / boat name",
+              "category": "safety"
+            }
+          ]
+        },
+        "shore": {
+          "id": "shore",
+          "name": "Shore dive add-ons",
+          "items": [
+            {
+              "id": "entry-exit",
+              "label": "Scout entry and exit point",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "surface-conditions",
+              "label": "Check surface conditions / surf",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "walk-gear",
+              "label": "Plan gear carry to entry point",
+              "category": "core-gear"
+            },
+            {
+              "id": "footwear",
+              "label": "Footwear for rocky entry",
+              "category": "exposure"
+            },
+            {
+              "id": "float-flag",
+              "label": "Float / flag if required locally",
+              "category": "safety"
+            }
+          ]
+        },
+        "night": {
+          "id": "night",
+          "name": "Night dive add-ons",
+          "items": [
+            {
+              "id": "primary-torch",
+              "label": "Primary torch — charged",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "backup-torch",
+              "label": "Backup torch — charged",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "chemical-light",
+              "label": "Tank marker / chemical light",
+              "category": "safety"
+            },
+            {
+              "id": "night-brief",
+              "label": "Review night signals with buddy",
+              "category": "safety"
+            },
+            {
+              "id": "glow-tape",
+              "label": "Reflective / glow markers on gear",
+              "category": "safety"
+            }
+          ]
+        },
+        "cold-water": {
+          "id": "cold-water",
+          "name": "Cold water add-ons",
+          "items": [
+            {
+              "id": "hood",
+              "label": "Hood",
+              "category": "exposure",
+              "critical": true
+            },
+            {
+              "id": "gloves",
+              "label": "Gloves",
+              "category": "exposure"
+            },
+            {
+              "id": "drysuit-undergarment",
+              "label": "Drysuit undergarment / thermal layers",
+              "category": "exposure"
+            },
+            {
+              "id": "drysuit-check",
+              "label": "Drysuit inflation / zipper check",
+              "hint": "If using drysuit",
+              "category": "exposure"
+            },
+            {
+              "id": "anti-fog",
+              "label": "Anti-fog / defog for mask",
+              "category": "core-gear"
+            },
+            {
+              "id": "warm-drink",
+              "label": "Warm drink / post-dive layers ready",
+              "category": "travel"
+            }
+          ]
+        },
+        "photo": {
+          "id": "photo",
+          "name": "Photography add-ons",
+          "items": [
+            {
+              "id": "housing",
+              "label": "Camera housing",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "housing-o-ring",
+              "label": "Housing o-ring — inspect and grease",
+              "hint": "Inspect for cuts; grease sparingly",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "camera-batteries",
+              "label": "Camera batteries — charged spares",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "memory-cards",
+              "label": "Memory cards — formatted spares",
+              "category": "camera"
+            },
+            {
+              "id": "strobes",
+              "label": "Strobes / lights — sync and charge",
+              "category": "camera"
+            },
+            {
+              "id": "lanyard",
+              "label": "Lanyard / float for camera",
+              "category": "camera"
+            },
+            {
+              "id": "desiccant",
+              "label": "Desiccant / silica in housing",
+              "category": "camera"
+            }
+          ]
+        },
+        "travel": {
+          "id": "travel",
+          "name": "Travel dive add-ons",
+          "items": [
+            {
+              "id": "passport-docs",
+              "label": "Passport / travel documents",
+              "category": "documents",
+              "critical": true
+            },
+            {
+              "id": "dive-insurance-travel",
+              "label": "Dive insurance valid for destination",
+              "category": "documents"
+            },
+            {
+              "id": "adapter",
+              "label": "Power adapter for chargers",
+              "category": "travel"
+            },
+            {
+              "id": "reg-service",
+              "label": "Regulator / gear serviced before trip",
+              "category": "core-gear"
+            },
+            {
+              "id": "rental-plan",
+              "label": "Confirm rental vs own gear plan",
+              "category": "travel"
+            },
+            {
+              "id": "local-rules",
+              "label": "Review local diving rules / permits",
+              "category": "documents"
+            },
+            {
+              "id": "first-aid-kit",
+              "label": "Personal meds / first-aid basics",
+              "category": "travel"
+            }
+          ]
+        },
+        "training": {
+          "id": "training",
+          "name": "Training dive add-ons",
+          "items": [
+            {
+              "id": "skill-objectives",
+              "label": "Review skill objectives with instructor/buddy",
+              "category": "safety"
+            },
+            {
+              "id": "slates",
+              "label": "Slates / wet notes",
+              "category": "core-gear"
+            },
+            {
+              "id": "signal-review",
+              "label": "Review hand signals for drills",
+              "category": "safety"
+            },
+            {
+              "id": "extra-weight-note",
+              "label": "Confirm weight check planned",
+              "category": "safety"
+            }
+          ]
+        }
+      }
+    },
+    "ru": {
+      "ui": {
+        "app": {
+          "loading": "Загрузка…"
+        },
+        "language": {
+          "label": "Язык"
+        },
+        "context": {
+          "title": "К какому погружению вы готовитесь?",
+          "subtitle": "Выберите тип погружения и модификаторы для чеклиста.",
+          "diveType": "Тип погружения",
+          "modifiers": "Модификаторы",
+          "boat": {
+            "label": "С лодки",
+            "description": "Вход с борта"
+          },
+          "shore": {
+            "label": "С берега",
+            "description": "Вход с берега или пляжа"
+          },
+          "nightDive": "Ночное",
+          "coldWater": "Холодная вода",
+          "photography": "Фото / видео",
+          "travel": "Поездка",
+          "training": "Учебное",
+          "generate": "Создать чеклист"
+        },
+        "checklist": {
+          "title": "Ваш чеклист",
+          "subtitle": "Отмечайте пункты по мере сборки и проверки снаряжения.",
+          "changeContext": "Сменить контекст",
+          "emptyTitle": "Чеклиста пока нет.",
+          "emptySubtitle": "Выберите контекст погружения, чтобы создать чеклист подготовки.",
+          "emptyAction": "Выбрать контекст",
+          "progress": "Прогресс",
+          "progressCount": "{{completed}} из {{total}} пунктов",
+          "critical": "Важно",
+          "reset": "Сбросить чеклист",
+          "startBuddyCheck": "Начать buddy-check",
+          "continueBuddyCheck": "Перейти к buddy-check",
+          "categories": {
+            "core-gear": "Основное снаряжение",
+            "safety": "Безопасность",
+            "exposure": "Термозащита",
+            "camera": "Камера / аксессуары",
+            "travel": "Поездка",
+            "documents": "Документы / прочее"
+          }
+        },
+        "buddyCheck": {
+          "title": "Buddy-check",
+          "subtitle": "Проверьте каждый пункт физически вместе с напарником.",
+          "backToChecklist": "← К чеклисту",
+          "step": "Шаг {{current}} из {{total}}",
+          "next": "Далее",
+          "finish": "Завершить",
+          "back": "Назад"
+        },
+        "summary": {
+          "title": "Подготовка проверена",
+          "body": "Помните: перед входом в воду проверьте всё снаряжение физически.",
+          "stats": "Чеклист: {{completed}} из {{total}} пунктов отмечено",
+          "newDive": "Подготовиться к другому погружению",
+          "reviewChecklist": "Просмотреть чеклист"
+        },
+        "disclaimer": {
+          "title": "Перед началом",
+          "p1": "DivePrep Buddy помогает организовать подготовку к погружению.",
+          "p2": "Он не заменяет обучение дайвингу, инструктаж инструктора, сертифицированные процедуры безопасности или дайв-компьютер.",
+          "p3": "Всегда проверяйте снаряжение физически и следуйте своей подготовке.",
+          "accept": "Понятно"
+        },
+        "safety": {
+          "footer": "Только помощник подготовки — не источник решений по безопасности."
+        },
+        "offline": {
+          "banner": "Офлайн-режим. Чеклисты работают на этом устройстве."
+        },
+        "admin": {
+          "title": "Редактор контента",
+          "subtitle": "Правки на этом устройстве. Экспорт JSON — для коммита в репозиторий.",
+          "back": "← К приложению",
+          "tabs": {
+            "app": "Приложение",
+            "ui": "Интерфейс",
+            "buddy": "Buddy-check",
+            "templates": "Чеклисты"
+          },
+          "locale": "Редактируемый язык",
+          "customized": "Используется свой контент",
+          "defaults": "Встроенные тексты по умолчанию",
+          "save": "Сохранить",
+          "saved": "Сохранено",
+          "reset": "Сбросить к defaults",
+          "export": "Экспорт JSON",
+          "import": "Импорт JSON",
+          "importError": "Не удалось импортировать файл. Проверьте формат JSON.",
+          "resetConfirm": "Сбросить весь свой контент к встроенным defaults?",
+          "appSection": "Название и PWA",
+          "uiSection": "Тексты интерфейса",
+          "buddySection": "Шаги buddy-check",
+          "templateSection": "Шаблоны чеклиста",
+          "selectTemplate": "Шаблон",
+          "itemLabel": "Название",
+          "itemHint": "Подсказка (необяз.)",
+          "itemCategory": "Категория",
+          "itemCritical": "Важный пункт",
+          "addItem": "Добавить пункт",
+          "removeItem": "Удалить",
+          "stepTitle": "Заголовок",
+          "stepPrompt": "Текст шага",
+          "stepConfirm": "Кнопка подтверждения",
+          "studioHint": "После правок: Экспорт JSON, затем в папке проекта:",
+          "studioCommand": "npm run content:apply -- ~/Downloads/content.bundle.json"
+        }
+      },
+      "buddyCheck": {
+        "version": 1,
+        "steps": [
+          {
+            "id": "bcd",
+            "title": "BCD",
+            "prompt": "Проверьте, что BCD сидит правильно и надувается/сдувается.",
+            "confirmLabel": "Проверено"
+          },
+          {
+            "id": "weights",
+            "title": "Груза",
+            "prompt": "Проверьте количество груза и надёжность крепления.",
+            "confirmLabel": "Проверено"
+          },
+          {
+            "id": "releases",
+            "title": "Quick-release",
+            "prompt": "Проверьте все quick-release — BCD, система грузов, сухой костюм при наличии.",
+            "confirmLabel": "Проверено"
+          },
+          {
+            "id": "air",
+            "title": "Воздух",
+            "prompt": "Проверьте, что воздух открыт, баллон полный, дышите с регулятора.",
+            "confirmLabel": "Проверено"
+          },
+          {
+            "id": "final-ok",
+            "title": "Финальный OK",
+            "prompt": "Завершите финальную проверку с напарником перед входом в воду.",
+            "confirmLabel": "Готов"
+          }
+        ]
+      },
+      "templates": {
+        "base": {
+          "id": "base",
+          "name": "Базовый — каждое погружение",
+          "items": [
+            {
+              "id": "mask",
+              "label": "Маска",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "snorkel",
+              "label": "Трубка",
+              "category": "core-gear"
+            },
+            {
+              "id": "fins",
+              "label": "Ласты",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "bcd",
+              "label": "BCD",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "regulator",
+              "label": "Регулятор",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "tank",
+              "label": "Баллон — полный, правильная газовая смесь",
+              "hint": "Проверьте заполнение и тип газа по плану и подготовке",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "weights",
+              "label": "Груза / система грузов",
+              "category": "core-gear",
+              "critical": true
+            },
+            {
+              "id": "computer",
+              "label": "Дайв-компьютер — заряжен",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "smb",
+              "label": "SMB / буй маркер",
+              "category": "safety"
+            },
+            {
+              "id": "whistle",
+              "label": "Звуковой сигнал",
+              "category": "safety"
+            },
+            {
+              "id": "cutting-tool",
+              "label": "Резак",
+              "category": "safety"
+            },
+            {
+              "id": "wetsuit",
+              "label": "Гидрокостюм / сухой костюм",
+              "category": "exposure",
+              "critical": true
+            },
+            {
+              "id": "cert-card",
+              "label": "Сертификат / подтверждение квалификации",
+              "category": "documents"
+            },
+            {
+              "id": "insurance",
+              "label": "Страховка для дайвинга (если нужна)",
+              "category": "documents"
+            }
+          ]
+        },
+        "boat": {
+          "id": "boat",
+          "name": "Дополнения — погружение с лодки",
+          "items": [
+            {
+              "id": "seasickness",
+              "label": "Средство от укачивания (при необходимости)",
+              "category": "travel"
+            },
+            {
+              "id": "dry-bag",
+              "label": "Гермомешок для палубы / брызг",
+              "category": "core-gear"
+            },
+            {
+              "id": "boots",
+              "label": "Обувь для палубы",
+              "category": "exposure"
+            },
+            {
+              "id": "entry-plan",
+              "label": "Прослушать инструктаж по входу/выходу",
+              "hint": "Слушайте экипаж и запомните тип входа",
+              "category": "safety"
+            },
+            {
+              "id": "point-of-no-return",
+              "label": "Запомнить контакт для экстренных случаев / название лодки",
+              "category": "safety"
+            }
+          ]
+        },
+        "shore": {
+          "id": "shore",
+          "name": "Дополнения — погружение с берега",
+          "items": [
+            {
+              "id": "entry-exit",
+              "label": "Осмотреть точку входа и выхода",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "surface-conditions",
+              "label": "Проверить условия на поверхности / прибой",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "walk-gear",
+              "label": "Спланировать переноску снаряжения к входу",
+              "category": "core-gear"
+            },
+            {
+              "id": "footwear",
+              "label": "Обувь для каменистого входа",
+              "category": "exposure"
+            },
+            {
+              "id": "float-flag",
+              "label": "Буй / флаг, если требуется местными правилами",
+              "category": "safety"
+            }
+          ]
+        },
+        "night": {
+          "id": "night",
+          "name": "Дополнения — ночное погружение",
+          "items": [
+            {
+              "id": "primary-torch",
+              "label": "Основной фонарь — заряжен",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "backup-torch",
+              "label": "Резервный фонарь — заряжен",
+              "category": "safety",
+              "critical": true
+            },
+            {
+              "id": "chemical-light",
+              "label": "Маркер на баллоне / химический свет",
+              "category": "safety"
+            },
+            {
+              "id": "night-brief",
+              "label": "Повторить ночные сигналы с напарником",
+              "category": "safety"
+            },
+            {
+              "id": "glow-tape",
+              "label": "Светоотражающие / светящиеся метки на снаряжении",
+              "category": "safety"
+            }
+          ]
+        },
+        "cold-water": {
+          "id": "cold-water",
+          "name": "Дополнения — холодная вода",
+          "items": [
+            {
+              "id": "hood",
+              "label": "Капюшон",
+              "category": "exposure",
+              "critical": true
+            },
+            {
+              "id": "gloves",
+              "label": "Перчатки",
+              "category": "exposure"
+            },
+            {
+              "id": "drysuit-undergarment",
+              "label": "Поддевы / термослои под сухой костюм",
+              "category": "exposure"
+            },
+            {
+              "id": "drysuit-check",
+              "label": "Проверка надува / молнии сухого костюма",
+              "hint": "Если используете сухой костюм",
+              "category": "exposure"
+            },
+            {
+              "id": "anti-fog",
+              "label": "Антифог / обезжиривание маски",
+              "category": "core-gear"
+            },
+            {
+              "id": "warm-drink",
+              "label": "Тёплый напиток / одежда после погружения готовы",
+              "category": "travel"
+            }
+          ]
+        },
+        "photo": {
+          "id": "photo",
+          "name": "Дополнения — фото / видео",
+          "items": [
+            {
+              "id": "housing",
+              "label": "Подводный бокс для камеры",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "housing-o-ring",
+              "label": "O-ring бокса — осмотр и смазка",
+              "hint": "Проверьте на порезы; смазывайте умеренно",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "camera-batteries",
+              "label": "Батареи камеры — заряженные запасные",
+              "category": "camera",
+              "critical": true
+            },
+            {
+              "id": "memory-cards",
+              "label": "Карты памяти — отформатированные запасные",
+              "category": "camera"
+            },
+            {
+              "id": "strobes",
+              "label": "Вспышки / свет — синхронизация и заряд",
+              "category": "camera"
+            },
+            {
+              "id": "lanyard",
+              "label": "Строп / поплавок для камеры",
+              "category": "camera"
+            },
+            {
+              "id": "desiccant",
+              "label": "Осушитель / силикагель в боксе",
+              "category": "camera"
+            }
+          ]
+        },
+        "travel": {
+          "id": "travel",
+          "name": "Дополнения — поездка",
+          "items": [
+            {
+              "id": "passport-docs",
+              "label": "Паспорт / проездные документы",
+              "category": "documents",
+              "critical": true
+            },
+            {
+              "id": "dive-insurance-travel",
+              "label": "Страховка для дайвинга действует в стране назначения",
+              "category": "documents"
+            },
+            {
+              "id": "adapter",
+              "label": "Адаптер для зарядных устройств",
+              "category": "travel"
+            },
+            {
+              "id": "reg-service",
+              "label": "Регулятор / снаряжение обслужено перед поездкой",
+              "category": "core-gear"
+            },
+            {
+              "id": "rental-plan",
+              "label": "Уточнить план: аренда или своё снаряжение",
+              "category": "travel"
+            },
+            {
+              "id": "local-rules",
+              "label": "Изучить местные правила дайвинга / разрешения",
+              "category": "documents"
+            },
+            {
+              "id": "first-aid-kit",
+              "label": "Личные лекарства / базовая аптечка",
+              "category": "travel"
+            }
+          ]
+        },
+        "training": {
+          "id": "training",
+          "name": "Дополнения — учебное погружение",
+          "items": [
+            {
+              "id": "skill-objectives",
+              "label": "Повторить цели упражнений с инструктором/напарником",
+              "category": "safety"
+            },
+            {
+              "id": "slates",
+              "label": "Таблички / подводные записи",
+              "category": "core-gear"
+            },
+            {
+              "id": "signal-review",
+              "label": "Повторить ручные сигналы для упражнений",
+              "category": "safety"
+            },
+            {
+              "id": "extra-weight-note",
+              "label": "Подтвердить, что проверка грузов запланирована",
+              "category": "safety"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

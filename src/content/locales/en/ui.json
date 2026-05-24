@@ -109,6 +109,8 @@
     "removeItem": "Remove",
     "stepTitle": "Title",
     "stepPrompt": "Prompt",
-    "stepConfirm": "Confirm button"
+    "stepConfirm": "Confirm button",
+    "studioHint": "After editing: Export JSON, then in the project folder run:",
+    "studioCommand": "npm run content:apply -- ~/Downloads/content.bundle.json"
   }
 }

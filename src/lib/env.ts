@@ -1,2 +1,5 @@
-/** Admin UI and local content overrides — local dev only, not in production builds. */
-export const isAdminEnabled = import.meta.env.DEV
+/** Visual content studio (local only). */
+export const isContentStudio = import.meta.env.VITE_CONTENT_STUDIO === 'true'
+
+/** Admin UI — dev or content studio, never production deploy. */
+export const isAdminEnabled = import.meta.env.DEV || isContentStudio
