@@ -14,7 +14,7 @@ export function ChecklistItemRow({ item, onToggle }: ChecklistItemRowProps) {
       type="button"
       onClick={onToggle}
       className={[
-        'flex min-h-12 w-full items-start gap-3 rounded-xl px-3 py-3 text-left transition-colors',
+        'flex min-h-12 w-full min-w-0 items-start gap-3 rounded-xl px-3 py-3 text-left transition-colors',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400',
         item.completed ? 'bg-slate-800/80' : 'bg-slate-800 hover:bg-slate-750',
       ].join(' ')}
@@ -34,7 +34,7 @@ export function ChecklistItemRow({ item, onToggle }: ChecklistItemRowProps) {
           </svg>
         )}
       </span>
-      <span className="flex-1">
+      <span className="min-w-0 flex-1">
         <span
           className={[
             'block text-base font-medium',

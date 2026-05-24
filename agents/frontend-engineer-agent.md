@@ -27,6 +27,7 @@ Implement UI and application logic in React + TypeScript + Tailwind per MVP spec
 5. Edge cases (empty checklist, reset, back navigation)
 6. What to defer
 7. **Tests**: which `*.test.ts` to add/update; run `npm run verify` before handoff
+8. **Layout**: if new fixed bars or full-screen UI → consult `agents/mobile-viewport-agent.md`
 
 ## Rules
 

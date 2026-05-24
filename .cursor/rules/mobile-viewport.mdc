@@ -1,0 +1,20 @@
+---
+description: Mobile screens — safe area, notches, PWA standalone, 44px touch targets
+globs:
+  - index.html
+  - src/app/**
+  - src/features/**
+  - src/components/**
+  - src/index.css
+---
+
+# Mobile viewport
+
+Read [`docs/mobile-viewport.md`](../docs/mobile-viewport.md) before changing layout shell, fixed bars, or modals.
+
+- `viewport-fit=cover` + `env(safe-area-inset-*)` with `max()` fallback
+- Fixed/sticky elements pad themselves
+- Min 44px touch targets; test iPhone **standalone PWA**, not only desktop DevTools
+- Never `user-scalable=no`
+
+Layout bugs → **Mobile Viewport Agent** (`agents/mobile-viewport-agent.md`).

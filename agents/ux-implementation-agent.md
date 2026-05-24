@@ -25,6 +25,7 @@ Translate `ux-flow.md` into concrete screens, navigation, and interaction states
 4. Empty, loading, error, and completion states
 5. Copy notes (headings, buttons, disclaimer placement)
 6. Accessibility notes (contrast, focus, screen reader labels)
+7. Mobile viewport notes — safe-area, thumb reach → hand off to `mobile-viewport-agent.md` for CSS/device tests
 
 ## Core screens (MVP)
 

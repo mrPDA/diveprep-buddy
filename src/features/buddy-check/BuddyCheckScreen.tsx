@@ -4,6 +4,7 @@ import {
   BuddyCheckProgressDots,
   BuddyCheckStepView,
 } from '@/components/ui/BuddyCheckStepView'
+import { TextLink } from '@/components/ui/TextLink'
 import { SafetyFooter } from '@/components/ui/DisclaimerBanner'
 import { useTranslation } from '@/i18n/useTranslation'
 
@@ -61,13 +62,9 @@ export function BuddyCheckScreen() {
   return (
     <div className="flex min-h-[60vh] flex-col">
       <header className="mb-6">
-        <button
-          type="button"
-          onClick={() => setView('checklist')}
-          className="text-sm text-sky-400 hover:text-sky-300"
-        >
+        <TextLink onClick={() => setView('checklist')}>
           {t('buddyCheck.backToChecklist')}
-        </button>
+        </TextLink>
         <h1 className="mt-2 text-2xl font-bold text-slate-50">
           {t('buddyCheck.title')}
         </h1>

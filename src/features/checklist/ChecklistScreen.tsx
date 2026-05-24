@@ -62,14 +62,14 @@ export function ChecklistScreen() {
   return (
     <div className="space-y-6">
       <header className="space-y-4">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div className="flex min-w-0 items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-bold text-slate-50">
               {t('checklist.title')}
             </h1>
             <p className="mt-1 text-sm text-slate-400">{t('checklist.subtitle')}</p>
           </div>
-          <Button variant="ghost" onClick={() => startNewPreparation()}>
+          <Button variant="ghost" className="shrink-0" onClick={() => startNewPreparation()}>
             {t('checklist.changeContext')}
           </Button>
         </div>

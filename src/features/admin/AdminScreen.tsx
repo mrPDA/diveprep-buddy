@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppStore } from '@/app/store'
 import { Button } from '@/components/ui/Button'
+import { TextLink } from '@/components/ui/TextLink'
 import { Field, SelectField, TextArea } from '@/components/ui/Field'
 import { TEMPLATE_IDS } from '@/lib/content/defaults'
 import { downloadContentBundle, parseImportedBundle } from '@/lib/content/export'
@@ -109,13 +110,7 @@ export function AdminScreen() {
   return (
     <div className="flex flex-1 flex-col pb-[calc(13rem+env(safe-area-inset-bottom))]">
       <header className="mb-4 space-y-2">
-        <button
-          type="button"
-          onClick={() => setView('context')}
-          className="text-sm text-sky-400 hover:text-sky-300"
-        >
-          {t('admin.back')}
-        </button>
+        <TextLink onClick={() => setView('context')}>{t('admin.back')}</TextLink>
         <h1 className="text-2xl font-bold text-slate-50">{t('admin.title')}</h1>
         <p className="text-sm text-slate-400">{t('admin.subtitle')}</p>
         <p className="text-xs text-slate-500">
@@ -138,7 +133,7 @@ export function AdminScreen() {
             type="button"
             onClick={() => setTab(item.id)}
             className={[
-              'rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+              'min-h-11 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
               tab === item.id
                 ? 'bg-sky-400 text-slate-900'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-700',
@@ -381,7 +376,7 @@ export function AdminScreen() {
         </section>
       )}
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-700 bg-slate-900/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur">
+      <div className="safe-overlay fixed inset-x-0 bottom-0 z-40 border-t border-slate-700 bg-slate-900/95 pt-3 backdrop-blur">
         <div className="mx-auto flex max-w-lg flex-col gap-2">
           <Button fullWidth onClick={() => void handleSave()}>
             {saveState === 'saved' ? t('admin.saved') : t('admin.save')}

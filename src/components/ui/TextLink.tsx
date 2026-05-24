@@ -1,18 +1,16 @@
 import type { ButtonHTMLAttributes } from 'react'
 
-export function IconButton({
-  label,
+/** Min 44px tap target for back / secondary text actions */
+export function TextLink({
   children,
   className = '',
   ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & { label: string }) {
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       type="button"
-      aria-label={label}
-      title={label}
       className={[
-        'flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-slate-600 bg-slate-800 text-slate-300 transition-colors hover:border-slate-500 hover:text-slate-100',
+        'inline-flex min-h-11 items-center py-2 text-sm text-sky-400 hover:text-sky-300',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400',
         className,
       ].join(' ')}

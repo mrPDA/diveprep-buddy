@@ -50,7 +50,7 @@ function AppShell() {
 
   if (!contentReady || !hydrated) {
     return (
-      <div className="flex min-h-dvh items-center justify-center">
+      <div className="flex min-h-dvh items-center justify-center app-safe-shell">
         <p className="text-slate-400">{t('app.loading')}</p>
       </div>
     )
@@ -61,8 +61,8 @@ function AppShell() {
 
   return (
     <>
-      <OfflineIndicator />
-      <div className="mx-auto flex min-h-dvh max-w-lg flex-col px-4 py-6 sm:px-6">
+      <div className="app-safe-shell mx-auto flex min-h-dvh max-w-lg flex-col">
+        <OfflineIndicator />
         <header className="mb-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-sky-400">

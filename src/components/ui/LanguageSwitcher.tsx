@@ -16,7 +16,7 @@ export function LanguageSwitcher() {
         id="locale-select"
         value={locale}
         onChange={(e) => setLocale(e.target.value as Locale)}
-        className="min-h-9 rounded-lg border border-slate-600 bg-slate-800 px-2 py-1 text-sm text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+        className="min-h-11 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-base text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
       >
         {SUPPORTED_LOCALES.map((code) => (
           <option key={code} value={code}>

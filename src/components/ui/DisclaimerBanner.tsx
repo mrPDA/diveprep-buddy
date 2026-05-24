@@ -10,7 +10,7 @@ export function DisclaimerModal({ onAccept }: DisclaimerModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/80 p-4 sm:items-center"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/80 safe-overlay sm:items-center"
       role="dialog"
       aria-modal="true"
       aria-labelledby="disclaimer-title"

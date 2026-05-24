@@ -49,7 +49,8 @@ See `docs/testing-policy.md`. QA does **not** re-run unit tests manually if veri
 ## Rules
 
 - Do not sign off release without Security & Safety pass **and** green `npm run verify`.
-- Test on at least one iOS Safari and one Android Chrome.
+- Test on at least one iOS Safari and one Android Chrome **standalone PWA** (Add to Home Screen).
+- Escalate safe-area / notch / home-bar overlap to **Mobile Viewport Agent** (`docs/mobile-viewport.md`).
 - Long checklist: scroll and tap targets still usable.
 - Report exact repro steps for failures.
 

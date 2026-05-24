@@ -24,10 +24,11 @@ Every session that changes code **ends with Test Engineer verify gate** (`npm ru
 5. PWA & Offline Agent      — agents/pwa-offline-agent.md
 6. Checklist Content Agent  — agents/checklist-content-agent.md
 7. UX Implementation Agent  — agents/ux-implementation-agent.md
-8. Test Engineer            — agents/test-engineer-agent.md  ← verify + audit + write/prune tests
-9. QA Agent                 — agents/qa-agent.md             ← manual matrix for gaps
-10. Security & Safety Agent  — agents/shared/security-safety-agent.md
-11. Validation Agent        — agents/shared/validation-agent.md
+8. Mobile Viewport Agent    — agents/mobile-viewport-agent.md  ← safe area, devices, touch
+9. Test Engineer            — agents/test-engineer-agent.md  ← verify + audit + write/prune tests
+10. QA Agent                 — agents/qa-agent.md             ← manual matrix for gaps
+11. Security & Safety Agent  — agents/shared/security-safety-agent.md
+12. Validation Agent        — agents/shared/validation-agent.md
 ```
 
 ## Verify gate (mandatory)
