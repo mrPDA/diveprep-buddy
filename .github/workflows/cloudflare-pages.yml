@@ -1,9 +1,10 @@
 name: Deploy to Cloudflare Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+
+# Primary deploy path: Cloudflare Pages → Connect Git (see docs/deploy.md).
+# Run this workflow manually after adding CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets.
 
 concurrency:
   group: cloudflare-pages
