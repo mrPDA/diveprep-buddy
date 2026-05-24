@@ -1,0 +1,25 @@
+---
+description: Dive checklist content and safety-sensitive copy
+globs: "src/content/**"
+alwaysApply: false
+---
+
+# Checklist Content & Safety Copy
+
+## Content rules
+
+- Each item needs stable `id`, short `label`, optional `hint`
+- Merge templates by context flags; dedupe by `id`
+- Keep merged lists focused; split into categories if long
+
+## Language
+
+- Assistant for preparation, not a safety authority
+- No decompression, gas mix, or medical advice in templates
+- Mark unverified items with `[review]` for instructor pass
+
+## Sources
+
+Align with `agents/checklist-content-agent.md` and `docs/research/ux-flow.md`.
+
+Run Security & Safety agent before publishing template changes widely.

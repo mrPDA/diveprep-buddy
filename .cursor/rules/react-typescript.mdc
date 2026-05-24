@@ -1,0 +1,31 @@
+---
+description: React and TypeScript conventions for DivePrep Buddy frontend
+globs: "src/**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# React / TypeScript
+
+## Stack
+
+React 18+, TypeScript, Tailwind CSS, Vite. State: Zustand or colocated React state.
+
+## Structure
+
+- `src/features/{context,checklist,buddy-check}/` — feature modules
+- `src/components/ui/` — shared presentational components
+- `src/lib/` — storage, checklist engine helpers
+- `src/content/templates/` — checklist template data
+
+## Patterns
+
+- Prefer function components and named exports for features
+- Typed props; avoid `any`
+- Derive checklist UI from typed `ChecklistItem[]`, never inline string arrays in JSX
+- Keep components thin; merge logic in `lib/checklist-engine.ts` (or equivalent)
+
+## Do not
+
+- Add UI libraries (MUI, Chakra) without decision in `agent-runs/`
+- Fetch remote APIs in MVP
+- Create abstractions used only once

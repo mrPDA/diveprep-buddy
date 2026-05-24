@@ -1,0 +1,25 @@
+---
+description: PWA, service worker, and offline storage rules
+globs: "{src/lib/storage/**,vite.config.*,public/**}"
+alwaysApply: false
+---
+
+# PWA & Offline
+
+## Requirements
+
+- App must work offline after first successful online load
+- Persist user progress and preferences in IndexedDB (Dexie preferred)
+- Document cache/version strategy when changing SW precache list
+
+## Storage
+
+- Schema version field on stored records
+- Reset checklist must clear both UI state and persisted completion flags
+- Avoid localStorage for large or structured checklist state
+
+## Testing
+
+Verify manually: airplane mode, reload, iOS Add to Home Screen when possible.
+
+See `agents/pwa-offline-agent.md` for full checklist.

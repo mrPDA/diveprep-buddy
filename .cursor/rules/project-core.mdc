@@ -1,0 +1,30 @@
+---
+description: DivePrep Buddy core project rules — scope, safety, MVP boundaries
+alwaysApply: true
+---
+
+# DivePrep Buddy — Core Rules
+
+Read `AGENTS.md` in project root before non-trivial changes.
+
+## Product scope
+
+Pre-dive preparation only: context selection, checklist, buddy-check, local persistence, offline PWA.
+
+## Forbidden without explicit approval
+
+- Backend, auth, cloud sync, LLM features
+- Dive logging, decompression, gas planning
+- Safety guarantees in UI copy
+
+## Implementation norms
+
+- Mobile-first; large tap targets
+- Checklist data in `src/content/templates/`, not hardcoded in components
+- Log agent decisions in `agent-runs/` when changing UX or scope
+- Research source of truth: `docs/research/`
+
+## Safety copy
+
+Use: prepared, reviewed, verify, remember.
+Avoid: safe, guaranteed, certified, approved for diving.
