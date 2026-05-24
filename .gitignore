@@ -17,8 +17,21 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+**/.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.code-workspace
+
+# Local agent memory (notesforllm MCP) — содержит только локальную конфигурацию
+.notesforllm.toml
+
+# Article drafts (Habr и подобное) — не коммитим черновики и скриншоты
+article/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example

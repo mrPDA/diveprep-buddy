@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Уязвимость / security
+    url: https://github.com/mrPDA/diveprep-buddy/security/advisories/new
+    about: "Не открывайте публичный issue для уязвимостей — используйте приватный канал."
+  - name: Live demo
+    url: https://diveprep-buddy.pages.dev
+    about: "Попробовать приложение перед тем, как открывать issue."

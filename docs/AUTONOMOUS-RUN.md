@@ -6,7 +6,7 @@
 
 Полностью «бесконечный» агент без участия человека в Cursor **не существует**. Но можно добиться **почти автономного** прогона, если:
 
-1. Workspace = `/Users/denispukinov/diveprep-buddy`
+1. Workspace = корень репозитория (любой локальный clone)
 2. Режим **Agent** (не Ask)
 3. Включён **auto-run** для терминала
 4. Есть **master prompt** с правилом «не спрашивать между фазами»
@@ -21,7 +21,7 @@
 | Настройка | Значение |
 | --- | --- |
 | Mode | **Agent** |
-| Workspace | `/Users/denispukinov/diveprep-buddy` |
+| Workspace | локальный clone репозитория |
 | Auto-run commands | **On** (Settings → Agents → Auto-run или YOLO) |
 | Privacy mode | Не **No Storage**, если нужны Automations / память |
 
