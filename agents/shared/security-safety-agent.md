@@ -37,3 +37,9 @@ For diving-related apps:
 - do not replace dive computers;
 - do not provide decompression authority;
 - do not imply guaranteed safety.
+
+## Testing hook
+
+- Forbidden phrases live in `src/test/safety-rules.ts` — enforced by CI.
+- Any change to disclaimer markers or forbidden patterns requires your review **and** green `npm run verify`.
+- Never approve weakening safety tests to pass CI.

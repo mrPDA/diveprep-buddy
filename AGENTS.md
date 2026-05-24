@@ -39,6 +39,8 @@ Core flows:
 npm install
 npm run dev
 npm run build
+npm run test
+npm run verify    # test + build — mandatory before handoff
 npm run preview
 ```
 
@@ -59,6 +61,7 @@ npm run preview
 - Copy `docs/implementation/checklist-engine-reference.ts` → `src/lib/checklist-engine.ts`
 - Mobile-first; large tap targets; dark high-contrast theme
 - Disclaimer from `docs/implementation/safety-copy.md`
+- **Testing**: read `docs/testing-policy.md`; run `npm run verify` before handoff; add lean tests for new logic
 - Save agent summaries to `agent-runs/` when requested
 
 ## Never

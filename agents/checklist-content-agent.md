@@ -56,7 +56,13 @@ Author and maintain dive-preparation checklist templates and the rule-based merg
 
 ## Validation hook
 
-Propose 3 scenarios for diver review:
+After any edit to `content.bundle.json` or templates:
+
+```bash
+npm run verify
+```
+
+Safety copy must pass `src/test/safety-copy.test.ts`. Propose 3 scenarios for diver review:
 
 1. Warm boat day dive, beginner
 2. Cold water night dive with camera

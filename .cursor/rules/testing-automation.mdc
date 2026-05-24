@@ -1,0 +1,29 @@
+---
+description: Autonomous testing — run verify, write lean tests, audit suite health
+alwaysApply: true
+---
+
+# Testing — mandatory for agents
+
+Read [`docs/testing-policy.md`](../docs/testing-policy.md) before changing logic, content, or scripts.
+
+## Every non-trivial session
+
+1. After code changes → `npm run verify` (must pass).
+2. New/changed pure logic → co-located `*.test.ts` or extend existing suite.
+3. Content/safety copy → must pass `src/test/safety-copy.test.ts`.
+4. Before handoff → `npm run test:audit`; fix actionable warnings.
+5. n4l → `notes_test_run_checkpoint` with verify result.
+
+## Lean suite
+
+- One test file per source module; no duplicate scenarios.
+- Do not add E2E without approval.
+- Never weaken `src/test/safety-rules.ts` without Security agent review.
+- Delete obsolete tests with removed features.
+
+## Do not
+
+- Skip tests because "user didn't ask".
+- Commit with red `npm run verify`.
+- Add snapshot tests of full `content.bundle.json`.

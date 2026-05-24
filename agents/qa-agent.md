@@ -18,11 +18,21 @@ Define and execute verification for MVP quality before user validation or deploy
 
 ## Output
 
-1. Test matrix (manual; automated if tests exist)
+1. Test matrix (manual gaps; automated via `npm run verify`)
 2. Priority bugs / gaps ranked P0–P2
 3. Device/browser coverage recommendation
 4. Release go/no-go recommendation
 5. Items for Validation Agent user tests
+6. Confirm Test Engineer ran `npm run verify` + `notes_test_run_checkpoint` this session
+
+## Automated baseline (must be green before manual QA)
+
+```bash
+npm run verify
+npm run test:audit
+```
+
+See `docs/testing-policy.md`. QA does **not** re-run unit tests manually if verify passed — focus on mobile/offline matrix below.
 
 ## P0 scenarios (must pass)
 
@@ -38,7 +48,7 @@ Define and execute verification for MVP quality before user validation or deploy
 
 ## Rules
 
-- Do not sign off release without Security & Safety pass.
+- Do not sign off release without Security & Safety pass **and** green `npm run verify`.
 - Test on at least one iOS Safari and one Android Chrome.
 - Long checklist: scroll and tap targets still usable.
 - Report exact repro steps for failures.

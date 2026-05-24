@@ -26,6 +26,7 @@ Implement UI and application logic in React + TypeScript + Tailwind per MVP spec
 4. Implementation steps in order
 5. Edge cases (empty checklist, reset, back navigation)
 6. What to defer
+7. **Tests**: which `*.test.ts` to add/update; run `npm run verify` before handoff
 
 ## Rules
 
@@ -35,6 +36,8 @@ Implement UI and application logic in React + TypeScript + Tailwind per MVP spec
 - Prefer composition over deep prop drilling; keep feature folders flat.
 - Match Tailwind patterns already in repo; no new UI library without approval.
 - TypeScript: explicit types for checklist items, context flags, buddy steps.
+- **New/changed logic in `src/lib/` or store** → co-located unit test; see `docs/testing-policy.md`.
+- Run `npm run verify` before ending session; delegate test gaps to Test Engineer agent.
 
 ## Anti-patterns
 
