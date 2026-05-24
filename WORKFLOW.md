@@ -23,8 +23,9 @@ Save results: yes → agent-runs/ or src/ as appropriate.
 6. Checklist Content Agent  — agents/checklist-content-agent.md
 7. UX Implementation Agent  — agents/ux-implementation-agent.md
 8. QA Agent                 — agents/qa-agent.md
-9. Security & Safety Agent  — agents/shared/security-safety-agent.md
-10. Validation Agent        — agents/shared/validation-agent.md
+9. Test Engineer            — agents/test-engineer-agent.md
+10. Security & Safety Agent  — agents/shared/security-safety-agent.md
+11. Validation Agent        — agents/shared/validation-agent.md
 ```
 
 ## Phase mapping
