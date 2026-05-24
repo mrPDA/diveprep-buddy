@@ -1,15 +1,28 @@
 import Dexie, { type EntityTable } from 'dexie'
+import type { ContentBundle } from '@/lib/content/types'
 import type { StoredSession, UserPreferences } from '@/types'
+
+export interface StoredContentBundle {
+  id: 'active'
+  bundle: ContentBundle
+  updatedAt: string
+}
 
 class DivePrepDatabase extends Dexie {
   preferences!: EntityTable<UserPreferences, 'id'>
   sessions!: EntityTable<StoredSession, 'id'>
+  contentBundles!: EntityTable<StoredContentBundle, 'id'>
 
   constructor() {
     super('DivePrepBuddy')
     this.version(1).stores({
       preferences: 'id',
       sessions: 'id',
+    })
+    this.version(2).stores({
+      preferences: 'id',
+      sessions: 'id',
+      contentBundles: 'id',
     })
   }
 }
@@ -46,7 +59,27 @@ export async function clearStoredSession(): Promise<void> {
   await db.sessions.delete('current')
 }
 
+export async function getContentBundleOverride(): Promise<ContentBundle | undefined> {
+  const row = await db.contentBundles.get('active')
+  return row?.bundle
+}
+
+export async function saveContentBundleOverride(
+  bundle: ContentBundle,
+): Promise<void> {
+  await db.contentBundles.put({
+    id: 'active',
+    bundle,
+    updatedAt: new Date().toISOString(),
+  })
+}
+
+export async function clearContentBundleOverride(): Promise<void> {
+  await db.contentBundles.delete('active')
+}
+
 export async function resetAllData(): Promise<void> {
   await db.sessions.clear()
   await db.preferences.clear()
+  await db.contentBundles.clear()
 }

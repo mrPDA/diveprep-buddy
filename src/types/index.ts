@@ -62,7 +62,7 @@ export interface BuddyCheckSession {
   completedAt?: string
 }
 
-export type AppView = 'context' | 'checklist' | 'buddy-check' | 'summary'
+export type AppView = 'context' | 'checklist' | 'buddy-check' | 'summary' | 'admin'
 
 export type Locale = 'en' | 'ru'
 

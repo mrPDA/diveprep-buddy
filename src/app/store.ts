@@ -37,6 +37,7 @@ interface AppState {
   finishBuddyCheck: () => void
   acceptDisclaimer: () => Promise<void>
   startNewPreparation: () => void
+  refreshChecklistFromContent: () => void
   hydrate: () => Promise<void>
 }
 
@@ -183,6 +184,14 @@ export const useAppStore = create<AppState>((set, get) => ({
       buddyCheck: emptyBuddyCheck(),
     })
     void clearStoredSession()
+  },
+
+  refreshChecklistFromContent: () => {
+    const { checklist, buddyCheck, locale } = get()
+    if (!checklist) return
+    const updated = relocalizeChecklist(checklist, locale)
+    set({ checklist: updated })
+    void saveStoredSession({ checklist: updated, buddyCheck })
   },
 
   hydrate: async () => {

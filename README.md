@@ -22,6 +22,8 @@ npm run preview
 
 Production hosting: **Cloudflare Pages**. See [`docs/deploy.md`](docs/deploy.md).
 
+**Edit texts & translations:** [`src/content/README.md`](src/content/README.md)
+
 ```text
 Build command:  npm run build
 Output folder: dist

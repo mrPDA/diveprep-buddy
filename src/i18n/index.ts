@@ -1,11 +1,4 @@
-import en from '@/i18n/locales/en'
-import ru from '@/i18n/locales/ru'
-import type { Locale } from '@/i18n/types'
 import type { ChecklistCategory } from '@/types'
-
-type Messages = Record<string, unknown>
-
-const messages: Record<Locale, Messages> = { en, ru }
 
 function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
   return path.split('.').reduce<unknown>((acc, key) => {
@@ -16,12 +9,12 @@ function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
   }, obj)
 }
 
-export function translate(
-  locale: Locale,
+export function translateMessages(
+  messages: Record<string, unknown>,
   key: string,
   params?: Record<string, string | number>,
 ): string {
-  const value = getNestedValue(messages[locale] as Record<string, unknown>, key)
+  const value = getNestedValue(messages, key)
   if (typeof value !== 'string') return key
 
   if (!params) return value
@@ -33,10 +26,13 @@ export function translate(
   )
 }
 
-export function categoryLabel(locale: Locale, category: ChecklistCategory): string {
-  return translate(locale, `checklist.categories.${category}`)
+export function categoryLabelFromUi(
+  ui: Record<string, unknown>,
+  category: ChecklistCategory,
+): string {
+  return translateMessages(ui, `checklist.categories.${category}`)
 }
 
-export function applyDocumentLocale(locale: Locale): void {
+export function applyDocumentLocale(locale: string): void {
   document.documentElement.lang = locale
 }
