@@ -98,7 +98,8 @@ npm run preview
 
 | Проблема | Решение |
 | --- | --- |
-| 404 при прямом URL | Убедитесь, что `public/_redirects` попал в `dist` |
+| `Invalid _redirects … Infinite loop` при `wrangler deploy` | **Не используйте** `public/_redirects` — SPA уже настроен в `wrangler.jsonc` (`not_found_handling: single-page-application`) |
+| 404 при прямом URL | Проверьте `wrangler.jsonc` → `assets.not_found_handling` |
 | Старый кэш после деплоя | Закройте вкладку / переустановите PWA; SW `autoUpdate` |
 | Build fails on CF | Node 22: в dashboard → Settings → Environment → `NODE_VERSION=22` |
 
