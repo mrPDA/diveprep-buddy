@@ -1,0 +1,38 @@
+{
+  "id": "cold-water",
+  "name": "Cold water add-ons",
+  "items": [
+    {
+      "id": "hood",
+      "label": "Hood",
+      "category": "exposure",
+      "critical": true
+    },
+    {
+      "id": "gloves",
+      "label": "Gloves",
+      "category": "exposure"
+    },
+    {
+      "id": "drysuit-undergarment",
+      "label": "Drysuit undergarment / thermal layers",
+      "category": "exposure"
+    },
+    {
+      "id": "drysuit-check",
+      "label": "Drysuit inflation / zipper check",
+      "hint": "If using drysuit",
+      "category": "exposure"
+    },
+    {
+      "id": "anti-fog",
+      "label": "Anti-fog / defog for mask",
+      "category": "core-gear"
+    },
+    {
+      "id": "warm-drink",
+      "label": "Warm drink / post-dive layers ready",
+      "category": "travel"
+    }
+  ]
+}

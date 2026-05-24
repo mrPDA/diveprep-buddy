@@ -1,0 +1,32 @@
+{
+  "id": "boat",
+  "name": "Boat dive add-ons",
+  "items": [
+    {
+      "id": "seasickness",
+      "label": "Seasickness remedy (if needed)",
+      "category": "travel"
+    },
+    {
+      "id": "dry-bag",
+      "label": "Dry bag for deck / spray",
+      "category": "core-gear"
+    },
+    {
+      "id": "boots",
+      "label": "Boots for boat deck",
+      "category": "exposure"
+    },
+    {
+      "id": "entry-plan",
+      "label": "Review boat entry / exit briefing",
+      "hint": "Listen to crew and note entry type",
+      "category": "safety"
+    },
+    {
+      "id": "point-of-no-return",
+      "label": "Note emergency contact / boat name",
+      "category": "safety"
+    }
+  ]
+}

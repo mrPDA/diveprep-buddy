@@ -1,0 +1,26 @@
+{
+  "id": "training",
+  "name": "Training dive add-ons",
+  "items": [
+    {
+      "id": "skill-objectives",
+      "label": "Review skill objectives with instructor/buddy",
+      "category": "safety"
+    },
+    {
+      "id": "slates",
+      "label": "Slates / wet notes",
+      "category": "core-gear"
+    },
+    {
+      "id": "signal-review",
+      "label": "Review hand signals for drills",
+      "category": "safety"
+    },
+    {
+      "id": "extra-weight-note",
+      "label": "Confirm weight check planned",
+      "category": "safety"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "training",
+  "name": "Дополнения — учебное погружение",
+  "items": [
+    {
+      "id": "skill-objectives",
+      "label": "Повторить цели упражнений с инструктором/напарником",
+      "category": "safety"
+    },
+    {
+      "id": "slates",
+      "label": "Таблички / подводные записи",
+      "category": "core-gear"
+    },
+    {
+      "id": "signal-review",
+      "label": "Повторить ручные сигналы для упражнений",
+      "category": "safety"
+    },
+    {
+      "id": "extra-weight-note",
+      "label": "Подтвердить, что проверка грузов запланирована",
+      "category": "safety"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "night",
+  "name": "Дополнения — ночное погружение",
+  "items": [
+    {
+      "id": "primary-torch",
+      "label": "Основной фонарь — заряжен",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "backup-torch",
+      "label": "Резервный фонарь — заряжен",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "chemical-light",
+      "label": "Маркер на баллоне / химический свет",
+      "category": "safety"
+    },
+    {
+      "id": "night-brief",
+      "label": "Повторить ночные сигналы с напарником",
+      "category": "safety"
+    },
+    {
+      "id": "glow-tape",
+      "label": "Светоотражающие / светящиеся метки на снаряжении",
+      "category": "safety"
+    }
+  ]
+}

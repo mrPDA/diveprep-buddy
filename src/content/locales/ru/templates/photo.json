@@ -1,0 +1,45 @@
+{
+  "id": "photo",
+  "name": "Дополнения — фото / видео",
+  "items": [
+    {
+      "id": "housing",
+      "label": "Подводный бокс для камеры",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "housing-o-ring",
+      "label": "O-ring бокса — осмотр и смазка",
+      "hint": "Проверьте на порезы; смазывайте умеренно",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "camera-batteries",
+      "label": "Батареи камеры — заряженные запасные",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "memory-cards",
+      "label": "Карты памяти — отформатированные запасные",
+      "category": "camera"
+    },
+    {
+      "id": "strobes",
+      "label": "Вспышки / свет — синхронизация и заряд",
+      "category": "camera"
+    },
+    {
+      "id": "lanyard",
+      "label": "Строп / поплавок для камеры",
+      "category": "camera"
+    },
+    {
+      "id": "desiccant",
+      "label": "Осушитель / силикагель в боксе",
+      "category": "camera"
+    }
+  ]
+}

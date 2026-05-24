@@ -1,0 +1,45 @@
+{
+  "id": "photo",
+  "name": "Photography add-ons",
+  "items": [
+    {
+      "id": "housing",
+      "label": "Camera housing",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "housing-o-ring",
+      "label": "Housing o-ring — inspect and grease",
+      "hint": "Inspect for cuts; grease sparingly",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "camera-batteries",
+      "label": "Camera batteries — charged spares",
+      "category": "camera",
+      "critical": true
+    },
+    {
+      "id": "memory-cards",
+      "label": "Memory cards — formatted spares",
+      "category": "camera"
+    },
+    {
+      "id": "strobes",
+      "label": "Strobes / lights — sync and charge",
+      "category": "camera"
+    },
+    {
+      "id": "lanyard",
+      "label": "Lanyard / float for camera",
+      "category": "camera"
+    },
+    {
+      "id": "desiccant",
+      "label": "Desiccant / silica in housing",
+      "category": "camera"
+    }
+  ]
+}

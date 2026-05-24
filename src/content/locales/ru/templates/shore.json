@@ -1,0 +1,33 @@
+{
+  "id": "shore",
+  "name": "Дополнения — погружение с берега",
+  "items": [
+    {
+      "id": "entry-exit",
+      "label": "Осмотреть точку входа и выхода",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "surface-conditions",
+      "label": "Проверить условия на поверхности / прибой",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "walk-gear",
+      "label": "Спланировать переноску снаряжения к входу",
+      "category": "core-gear"
+    },
+    {
+      "id": "footwear",
+      "label": "Обувь для каменистого входа",
+      "category": "exposure"
+    },
+    {
+      "id": "float-flag",
+      "label": "Буй / флаг, если требуется местными правилами",
+      "category": "safety"
+    }
+  ]
+}

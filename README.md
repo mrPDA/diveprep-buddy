@@ -1,52 +1,38 @@
 # DivePrep Buddy
 
-Pre-dive preparation PWA: contextual checklists and buddy-check for recreational divers.
+Pre-dive preparation PWA: context → checklist → buddy-check → summary.
 
-## Статус
+Not a dive computer, logbook, or decompression planner.
 
-Prototype — workspace готов, код ещё не scaffolded.
+## Local development
 
-## Быстрый старт
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy
+
+Production hosting: **Cloudflare Pages**. See [`docs/deploy.md`](docs/deploy.md).
 
 ```text
-Read AGENTS.md first.
-Product context: docs/research-links.md
-Dev workflow: WORKFLOW.md
+Build command:  npm run build
+Output folder: dist
 ```
 
-## Структура
+Live URL (after setup): `https://diveprep-buddy.pages.dev`
 
-| Путь | Назначение |
-| --- | --- |
-| `AGENTS.md` | Инструкции для AI-агентов |
-| `.cursor/rules/` | Cursor-правила |
-| `agents/` | Агенты разработки |
-| `docs/research/` | Копия артефактов исследования |
-| `agent-runs/` | Логи прогонов агентов |
-| `diveprep-buddy.code-workspace` | Файл workspace для Cursor/VS Code |
+## Docs for agents
 
-## Workspace
+Start at [`docs/START-HERE.md`](docs/START-HERE.md).
 
-Открыть как корень:
+## License
 
-```bash
-cursor /Users/denispukinov/diveprep-buddy
-```
-
-Или через файл:
-
-```bash
-cursor diveprep-buddy.code-workspace
-```
-
-## MVP
-
-PWA без бэкенда: контекст погружения → чеклист → buddy-check → офлайн + local storage.
-
-## Следующий шаг
-
-Phase 1 из `docs/research/task-breakdown.md`: React + Vite + PWA scaffold.
-
-## Связь с ideas repo
-
-Исследование ведётся в [ideas](https://github.com/) (`ideas/researching/diveprep-buddy/`). Локальная копия — `docs/research/`.
+Private — see repository owner.

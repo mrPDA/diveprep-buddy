@@ -1,0 +1,33 @@
+{
+  "id": "night",
+  "name": "Night dive add-ons",
+  "items": [
+    {
+      "id": "primary-torch",
+      "label": "Primary torch — charged",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "backup-torch",
+      "label": "Backup torch — charged",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "chemical-light",
+      "label": "Tank marker / chemical light",
+      "category": "safety"
+    },
+    {
+      "id": "night-brief",
+      "label": "Review night signals with buddy",
+      "category": "safety"
+    },
+    {
+      "id": "glow-tape",
+      "label": "Reflective / glow markers on gear",
+      "category": "safety"
+    }
+  ]
+}

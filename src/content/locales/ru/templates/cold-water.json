@@ -1,0 +1,29 @@
+{
+  "id": "cold-water",
+  "name": "Дополнения — холодная вода",
+  "items": [
+    { "id": "hood", "label": "Капюшон", "category": "exposure", "critical": true },
+    { "id": "gloves", "label": "Перчатки", "category": "exposure" },
+    {
+      "id": "drysuit-undergarment",
+      "label": "Поддевы / термослои под сухой костюм",
+      "category": "exposure"
+    },
+    {
+      "id": "drysuit-check",
+      "label": "Проверка надува / молнии сухого костюма",
+      "hint": "Если используете сухой костюм",
+      "category": "exposure"
+    },
+    {
+      "id": "anti-fog",
+      "label": "Антифог / обезжиривание маски",
+      "category": "core-gear"
+    },
+    {
+      "id": "warm-drink",
+      "label": "Тёплый напиток / одежда после погружения готовы",
+      "category": "travel"
+    }
+  ]
+}

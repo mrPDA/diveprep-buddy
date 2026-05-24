@@ -1,0 +1,32 @@
+{
+  "id": "boat",
+  "name": "Дополнения — погружение с лодки",
+  "items": [
+    {
+      "id": "seasickness",
+      "label": "Средство от укачивания (при необходимости)",
+      "category": "travel"
+    },
+    {
+      "id": "dry-bag",
+      "label": "Гермомешок для палубы / брызг",
+      "category": "core-gear"
+    },
+    {
+      "id": "boots",
+      "label": "Обувь для палубы",
+      "category": "exposure"
+    },
+    {
+      "id": "entry-plan",
+      "label": "Прослушать инструктаж по входу/выходу",
+      "hint": "Слушайте экипаж и запомните тип входа",
+      "category": "safety"
+    },
+    {
+      "id": "point-of-no-return",
+      "label": "Запомнить контакт для экстренных случаев / название лодки",
+      "category": "safety"
+    }
+  ]
+}

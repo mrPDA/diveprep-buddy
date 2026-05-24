@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "id": "bcd",
+      "title": "BCD",
+      "prompt": "Verify BCD fits and inflates/deflates correctly.",
+      "confirmLabel": "Checked"
+    },
+    {
+      "id": "weights",
+      "title": "Weights",
+      "prompt": "Verify weight amount and secure attachment.",
+      "confirmLabel": "Checked"
+    },
+    {
+      "id": "releases",
+      "title": "Releases",
+      "prompt": "Verify all releases — BCD, weight system, drysuit if applicable.",
+      "confirmLabel": "Checked"
+    },
+    {
+      "id": "air",
+      "title": "Air",
+      "prompt": "Verify air is on, tank is full, breathe from regulator.",
+      "confirmLabel": "Checked"
+    },
+    {
+      "id": "final-ok",
+      "title": "Final OK",
+      "prompt": "Complete final buddy review together before entering the water.",
+      "confirmLabel": "Ready"
+    }
+  ]
+}

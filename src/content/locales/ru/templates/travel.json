@@ -1,0 +1,42 @@
+{
+  "id": "travel",
+  "name": "Дополнения — поездка",
+  "items": [
+    {
+      "id": "passport-docs",
+      "label": "Паспорт / проездные документы",
+      "category": "documents",
+      "critical": true
+    },
+    {
+      "id": "dive-insurance-travel",
+      "label": "Страховка для дайвинга действует в стране назначения",
+      "category": "documents"
+    },
+    {
+      "id": "adapter",
+      "label": "Адаптер для зарядных устройств",
+      "category": "travel"
+    },
+    {
+      "id": "reg-service",
+      "label": "Регулятор / снаряжение обслужено перед поездкой",
+      "category": "core-gear"
+    },
+    {
+      "id": "rental-plan",
+      "label": "Уточнить план: аренда или своё снаряжение",
+      "category": "travel"
+    },
+    {
+      "id": "local-rules",
+      "label": "Изучить местные правила дайвинга / разрешения",
+      "category": "documents"
+    },
+    {
+      "id": "first-aid-kit",
+      "label": "Личные лекарства / базовая аптечка",
+      "category": "travel"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "travel",
+  "name": "Travel dive add-ons",
+  "items": [
+    {
+      "id": "passport-docs",
+      "label": "Passport / travel documents",
+      "category": "documents",
+      "critical": true
+    },
+    {
+      "id": "dive-insurance-travel",
+      "label": "Dive insurance valid for destination",
+      "category": "documents"
+    },
+    {
+      "id": "adapter",
+      "label": "Power adapter for chargers",
+      "category": "travel"
+    },
+    {
+      "id": "reg-service",
+      "label": "Regulator / gear serviced before trip",
+      "category": "core-gear"
+    },
+    {
+      "id": "rental-plan",
+      "label": "Confirm rental vs own gear plan",
+      "category": "travel"
+    },
+    {
+      "id": "local-rules",
+      "label": "Review local diving rules / permits",
+      "category": "documents"
+    },
+    {
+      "id": "first-aid-kit",
+      "label": "Personal meds / first-aid basics",
+      "category": "travel"
+    }
+  ]
+}

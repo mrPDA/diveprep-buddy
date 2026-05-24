@@ -1,0 +1,33 @@
+{
+  "id": "shore",
+  "name": "Shore dive add-ons",
+  "items": [
+    {
+      "id": "entry-exit",
+      "label": "Scout entry and exit point",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "surface-conditions",
+      "label": "Check surface conditions / surf",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "walk-gear",
+      "label": "Plan gear carry to entry point",
+      "category": "core-gear"
+    },
+    {
+      "id": "footwear",
+      "label": "Footwear for rocky entry",
+      "category": "exposure"
+    },
+    {
+      "id": "float-flag",
+      "label": "Float / flag if required locally",
+      "category": "safety"
+    }
+  ]
+}

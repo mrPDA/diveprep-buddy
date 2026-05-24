@@ -13,7 +13,8 @@ Author and maintain dive-preparation checklist templates and the rule-based merg
 
 ## Inputs
 
-- `docs/research/feature-spec.md`, `docs/research/ux-flow.md`, `docs/research/idea.md`
+- `docs/content-seed/templates/` and `docs/implementation/data-model.md`
+- `docs/research/feature-spec.md`, `docs/research/ux-flow.md`
 - Real diver/instructor feedback (when available)
 - Existing templates in `src/content/templates/`
 

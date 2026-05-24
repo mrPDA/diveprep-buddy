@@ -14,7 +14,8 @@ Implement UI and application logic in React + TypeScript + Tailwind per MVP spec
 ## Inputs
 
 - `AGENTS.md` stack constraints
-- `docs/research/ux-flow.md`, `docs/research/feature-spec.md`, `docs/research/task-breakdown.md`
+- `docs/implementation/screen-specs.md`, `docs/implementation/data-model.md`
+- Seed templates: `docs/content-seed/templates/`
 - Existing `src/` patterns
 
 ## Output

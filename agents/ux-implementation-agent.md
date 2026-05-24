@@ -13,8 +13,8 @@ Translate `ux-flow.md` into concrete screens, navigation, and interaction states
 
 ## Inputs
 
+- `docs/implementation/screen-specs.md`
 - `docs/research/ux-flow.md`
-- `docs/research/feature-spec.md`
 - Current component tree
 
 ## Output

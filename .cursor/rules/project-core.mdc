@@ -19,10 +19,11 @@ Pre-dive preparation only: context selection, checklist, buddy-check, local pers
 
 ## Implementation norms
 
+- Read `docs/START-HERE.md` before coding
 - Mobile-first; large tap targets
-- Checklist data in `src/content/templates/`, not hardcoded in components
+- Checklist seed: `docs/content-seed/` → copy to `src/content/templates/`
+- Checklist engine reference: `docs/implementation/checklist-engine-reference.ts`
 - Log agent decisions in `agent-runs/` when changing UX or scope
-- Research source of truth: `docs/research/`
 
 ## Safety copy
 

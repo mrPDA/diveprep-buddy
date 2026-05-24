@@ -2,32 +2,44 @@
 
 Machine-first instructions for AI coding agents (Cursor, Copilot, Codex, etc.).
 
+## Start here
+
+**Before any implementation work, read [`docs/START-HERE.md`](docs/START-HERE.md).**
+
+That file links to: implementation brief, data model, scaffold recipe, screen specs, safety copy, and seed checklist templates.
+
+## Persistent memory (n4l / notesforllm)
+
+This project uses the `notesforllm` MCP for cross-session memory. **Every non-trivial session MUST**:
+
+1. Call `notes_attach()` first (binds via `.notesforllm.toml`).
+2. Call `notes_resume_context()` and read `synthesis.last_handoff_next_step` / `exact_next_command` / `unresolved_risks`.
+3. During work — `notes_checkpoint_save(...)` after big steps, `notes_decision_save(...)` for choices affecting >1 file.
+4. Before ending — `notes_handoff_save(...)` with `goal`, `current_state`, `verified`, `risks`, `first_next_step`.
+
+Full workflow, structured fields, linkage rules and examples: [`docs/notesforllm-workflow.md`](docs/notesforllm-workflow.md).
+
+`agent-runs/` (human-readable reports) and n4l (machine memory) are **not** duplicates — write `agent-runs/` only when the user asks; write n4l automatically.
+
 ## Project identity
 
 Pre-dive preparation PWA for recreational divers. **Not** a dive computer, logbook, or decompression planner.
 
-Core flows only:
+Core flows:
 
-1. Choose dive context (shore/boat, cold/warm, night, travel, photo add-on).
-2. Generate and complete contextual checklist.
-3. Run structured buddy-check.
-4. Persist preferences and last session locally; work offline.
+1. Choose dive context → 2. Generate checklist → 3. Complete items → 4. Buddy-check → 5. Summary
 
-## Must read before coding
+## Current phase
 
-- `docs/research-links.md` — product/UX/tech artifacts
-- `docs/research/ux-flow.md` — canonical UX
-- `docs/research/task-breakdown.md` — build phases
+**Phase 1 — Prototype Foundation.** Run `docs/implementation/scaffold.md`, then Phase 2 checklist engine.
 
-## Commands (after scaffold exists)
+## Commands (after scaffold)
 
 ```bash
 npm install
 npm run dev
 npm run build
 npm run preview
-npm run lint        # if configured
-npm run test        # if configured
 ```
 
 ## Tech constraints
@@ -35,55 +47,37 @@ npm run test        # if configured
 | Area | Choice |
 | --- | --- |
 | UI | React 18+, TypeScript, Tailwind |
-| Build | Vite |
-| State | Zustand or React state for MVP |
+| Build | Vite + vite-plugin-pwa |
+| State | Zustand or React state |
 | Storage | IndexedDB via Dexie.js |
-| Deploy | Static host (Vercel/Netlify) |
 | Backend | **None** for MVP |
 
 ## Must
 
-- Mobile-first layout; large tap targets for wet/gloved use context.
-- Offline-first after first load (service worker + local persistence).
-- Rule-based checklist engine (no LLM in MVP).
-- Visible disclaimer: assistant only, not a safety authority.
-- Keep MVP scope; defer accounts, sync, weather API, AI, dive logging.
-- Match existing patterns in `src/` before introducing new abstractions.
-- Save agent run summaries to `agent-runs/` when user asks for agent work.
+- Follow `docs/implementation/data-model.md` for types
+- Use seed templates from `docs/content-seed/` → `src/content/templates/`
+- Copy `docs/implementation/checklist-engine-reference.ts` → `src/lib/checklist-engine.ts`
+- Mobile-first; large tap targets; dark high-contrast theme
+- Disclaimer from `docs/implementation/safety-copy.md`
+- Save agent summaries to `agent-runs/` when requested
 
 ## Never
 
-- Imply guaranteed safety, certification, or decompression authority.
-- Add auth, cloud sync, or paid infra for MVP without explicit approval.
-- Replace instructor training or dive computer functions.
-- Copy long research docs into code comments; link to files instead.
-- Expand AGENTS.md beyond ~150 lines; put detail in `agents/` or `docs/`.
+- Imply guaranteed safety or decompression authority
+- Add auth, cloud sync, AI, weather API, dive logging without approval
+- Hardcode checklist strings in JSX
 
 ## Agent roles
 
-See `agents/README.md`. Default build pipeline:
+See `agents/README.md` and `WORKFLOW.md`.
+
+## Target `src/` layout
 
 ```text
-Orchestrator → MVP Engineer → Frontend → PWA/Offline → Content → UX Implementation → QA → Security & Safety
+src/app/
+src/features/{context,checklist,buddy-check,summary}/
+src/components/ui/
+src/lib/checklist-engine.ts
+src/lib/storage/
+src/content/templates/
 ```
-
-## File layout (target)
-
-```text
-src/
-  components/
-  features/checklist/
-  features/buddy-check/
-  features/context/
-  content/templates/
-  lib/storage/
-  app/
-public/
-```
-
-## Quality bar
-
-- TypeScript strict where project enables it.
-- No dead code paths for non-MVP features.
-- Checklist templates editable without touching UI logic.
-- Buddy-check steps match `docs/research/ux-flow.md` unless logged in `agent-runs/`.

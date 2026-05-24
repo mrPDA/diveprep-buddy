@@ -1,0 +1,85 @@
+{
+  "id": "base",
+  "name": "Base — every dive",
+  "items": [
+    {
+      "id": "mask",
+      "label": "Mask",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "snorkel",
+      "label": "Snorkel",
+      "category": "core-gear"
+    },
+    {
+      "id": "fins",
+      "label": "Fins",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "bcd",
+      "label": "BCD",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "regulator",
+      "label": "Regulator set",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "tank",
+      "label": "Tank — full, correct gas",
+      "hint": "Verify fill and gas type match your plan and training",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "weights",
+      "label": "Weights / weight system",
+      "category": "core-gear",
+      "critical": true
+    },
+    {
+      "id": "computer",
+      "label": "Dive computer — charged",
+      "category": "safety",
+      "critical": true
+    },
+    {
+      "id": "smb",
+      "label": "SMB / surface marker",
+      "category": "safety"
+    },
+    {
+      "id": "whistle",
+      "label": "Audible signaling device",
+      "category": "safety"
+    },
+    {
+      "id": "cutting-tool",
+      "label": "Cutting tool",
+      "category": "safety"
+    },
+    {
+      "id": "wetsuit",
+      "label": "Exposure suit (wetsuit/drysuit)",
+      "category": "exposure",
+      "critical": true
+    },
+    {
+      "id": "cert-card",
+      "label": "Certification card / proof",
+      "category": "documents"
+    },
+    {
+      "id": "insurance",
+      "label": "Dive insurance info (if applicable)",
+      "category": "documents"
+    }
+  ]
+}

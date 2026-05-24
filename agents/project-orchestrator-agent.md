@@ -13,7 +13,7 @@ Coordinate development work: align code with research artifacts, pick the curren
 
 ## Inputs
 
-- `AGENTS.md`, `WORKFLOW.md`, `docs/research-links.md`
+- `docs/START-HERE.md` and `docs/implementation/brief.md`
 - `docs/research/task-breakdown.md`
 - Current git diff / existing `src/` state
 - User goal for the session
