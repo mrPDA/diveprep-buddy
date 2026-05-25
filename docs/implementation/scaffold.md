@@ -1,6 +1,6 @@
 # Scaffold Recipe — Phase 1
 
-Execute in repo root `/Users/denispukinov/diveprep-buddy`.
+Execute in the repo root.
 
 ## 1. Create Vite + React + TS project
 
