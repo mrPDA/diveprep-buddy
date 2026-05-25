@@ -17,7 +17,6 @@ interface ContentState {
   bundle: ContentBundle
   isCustomized: boolean
   hydrateContent: () => Promise<void>
-  getUi: (locale: Locale) => Record<string, unknown>
   getBuddyCheckSteps: (locale: Locale) => BuddyCheckStep[]
   getChecklistTemplates: (locale: Locale) => TemplateMap
   getAppMeta: () => AppMeta
@@ -36,8 +35,6 @@ export const useContentStore = create<ContentState>((set, get) => ({
     const bundle = override ?? getDefaultContentBundle()
     set({ ready: true, bundle, isCustomized: Boolean(override) })
   },
-
-  getUi: (locale) => get().bundle.locales[locale].ui,
 
   getBuddyCheckSteps: (locale) => get().bundle.locales[locale].buddyCheck.steps,
 

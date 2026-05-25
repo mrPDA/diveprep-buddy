@@ -12,7 +12,7 @@ That file links to: implementation brief, data model, scaffold recipe, screen sp
 
 This project uses the `notesforllm` MCP for cross-session memory. **Every non-trivial session MUST**:
 
-1. Call `notes_attach()` first (binds via `.notesforllm.toml`).
+1. Call `notes_attach({cwd: "<absolute workspace root>"})` first — **always pass `cwd` explicitly**, otherwise the MCP server walks up from its own directory and binds you to the wrong space. Verify response: `space_slug == "diveprep-buddy"`, `config_path` ends with `<workspace>/.notesforllm.toml`.
 2. Call `notes_resume_context()` and read `synthesis.last_handoff_next_step` / `exact_next_command` / `unresolved_risks`.
 3. During work — `notes_checkpoint_save(...)` after big steps, `notes_decision_save(...)` for choices affecting >1 file.
 4. Before ending — `notes_handoff_save(...)` with `goal`, `current_state`, `verified`, `risks`, `first_next_step`.

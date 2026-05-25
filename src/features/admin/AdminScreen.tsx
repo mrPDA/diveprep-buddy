@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useAppStore } from '@/app/store'
 import { Button } from '@/components/ui/Button'
 import { TextLink } from '@/components/ui/TextLink'
 import { Field, SelectField, TextArea } from '@/components/ui/Field'
+import { CATEGORY_ORDER } from '@/lib/checklist-engine'
 import { TEMPLATE_IDS } from '@/lib/content/defaults'
 import { downloadContentBundle, parseImportedBundle } from '@/lib/content/export'
 import {
@@ -20,15 +21,6 @@ import type { BuddyCheckStep, ChecklistCategory, ChecklistItem } from '@/types'
 
 type AdminTab = 'app' | 'ui' | 'buddy' | 'templates'
 
-const CATEGORIES: ChecklistCategory[] = [
-  'core-gear',
-  'safety',
-  'exposure',
-  'camera',
-  'travel',
-  'documents',
-]
-
 export function AdminScreen() {
   const { t } = useTranslation()
   const setView = useAppStore((s) => s.setView)
@@ -38,6 +30,7 @@ export function AdminScreen() {
   const saveBundle = useContentStore((s) => s.saveBundle)
   const resetToDefaults = useContentStore((s) => s.resetToDefaults)
 
+  const [prevBundle, setPrevBundle] = useState(bundle)
   const [draft, setDraft] = useState<ContentBundle>(() => structuredClone(bundle))
   const [tab, setTab] = useState<AdminTab>('app')
   const [editLocale, setEditLocale] = useState<Locale>('ru')
@@ -45,9 +38,10 @@ export function AdminScreen() {
   const [saveState, setSaveState] = useState<'idle' | 'saved'>('idle')
   const importRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
+  if (prevBundle !== bundle) {
+    setPrevBundle(bundle)
     setDraft(structuredClone(bundle))
-  }, [bundle])
+  }
 
   const localeContent = draft.locales[editLocale]
   const uiLeaves = useMemo(
@@ -480,7 +474,7 @@ function TemplateItemEditor({
           onChange({ ...item, category: e.target.value as ChecklistCategory })
         }
       >
-        {CATEGORIES.map((cat) => (
+        {CATEGORY_ORDER.map((cat) => (
           <option key={cat} value={cat}>
             {cat}
           </option>

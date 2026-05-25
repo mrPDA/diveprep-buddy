@@ -7,6 +7,15 @@ import {
 import { TextLink } from '@/components/ui/TextLink'
 import { SafetyFooter } from '@/components/ui/DisclaimerBanner'
 import { useTranslation } from '@/i18n/useTranslation'
+import type { BuddyCheckStep } from '@/types'
+
+function findFirstIncompleteIndex(
+  steps: BuddyCheckStep[],
+  completed: string[],
+): number {
+  const idx = steps.findIndex((s) => !completed.includes(s.id))
+  return idx < 0 ? 0 : idx
+}
 
 export function BuddyCheckScreen() {
   const checklist = useAppStore((s) => s.checklist)
@@ -17,22 +26,15 @@ export function BuddyCheckScreen() {
   const buddyCheckSteps = useBuddyCheckSteps()
   const { t } = useTranslation()
 
-  const [stepIndex, setStepIndex] = useState(0)
+  const [stepIndex, setStepIndex] = useState(() =>
+    findFirstIncompleteIndex(buddyCheckSteps, buddyCheck.stepsCompleted),
+  )
 
   useEffect(() => {
     if (!checklist) {
       setView('context')
     }
   }, [checklist, setView])
-
-  useEffect(() => {
-    const firstIncomplete = buddyCheckSteps.findIndex(
-      (s) => !buddyCheck.stepsCompleted.includes(s.id),
-    )
-    if (firstIncomplete >= 0) {
-      setStepIndex(firstIncomplete)
-    }
-  }, [buddyCheck.stepsCompleted, buddyCheckSteps])
 
   if (!checklist) return null
 

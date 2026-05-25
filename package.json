@@ -29,7 +29,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:audit": "node scripts/test-audit.mjs",
-    "verify": "npm run test && npm run build",
+    "verify": "npm run lint && npm run test && npm run build",
     "preview": "vite preview",
     "content:assemble": "node scripts/content-tools.mjs assemble",
     "content:sync": "node scripts/content-tools.mjs sync",

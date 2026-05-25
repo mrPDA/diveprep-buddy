@@ -12,18 +12,9 @@ import {
   getRentalChecklistItems,
   getVisibleChecklistItems,
 } from '@/lib/checklist-display'
-import { isRentalChecklistItem } from '@/lib/checklist-engine'
+import { CATEGORY_ORDER, isRentalChecklistItem } from '@/lib/checklist-engine'
 import { useTranslation } from '@/i18n/useTranslation'
 import type { ChecklistCategory } from '@/types'
-
-const CATEGORY_ORDER: ChecklistCategory[] = [
-  'core-gear',
-  'safety',
-  'exposure',
-  'camera',
-  'travel',
-  'documents',
-]
 
 export function ChecklistScreen() {
   const checklist = useAppStore((s) => s.checklist)

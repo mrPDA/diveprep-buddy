@@ -6,14 +6,19 @@ import type {
   DiveContext,
 } from '@/types'
 
-const CATEGORY_ORDER: ChecklistCategory[] = [
+/**
+ * Single source of truth for category order — used both for sorting
+ * inside `composeChecklist` and for rendering grouped sections in the UI.
+ * Adding a new `ChecklistCategory` requires appending it here.
+ */
+export const CATEGORY_ORDER: readonly ChecklistCategory[] = [
   'core-gear',
   'safety',
   'exposure',
   'camera',
   'travel',
   'documents',
-]
+] as const
 
 function categoryRank(category: ChecklistCategory): number {
   const index = CATEGORY_ORDER.indexOf(category)
