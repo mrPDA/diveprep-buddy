@@ -68,14 +68,22 @@ export default defineConfig({
 ## 4. Target folder structure (create empty dirs)
 
 ```bash
-mkdir -p src/{app,components/ui,features/{context,checklist,buddy-check,summary},lib/storage,content/templates,types}
+mkdir -p src/{app,components/ui,features/{context,checklist,buddy-check,summary},lib/storage,types}
+mkdir -p src/content/locales/{en,ru}/templates
 ```
 
 ## 5. Copy seed content
 
+Seed templates and buddy-check live as **split files** per locale. The
+runtime reads from `src/content/content.bundle.json`, which is generated
+by `npm run content:assemble` — never edit the bundle directly.
+
 ```bash
-cp -R docs/content-seed/templates/* src/content/templates/
-cp docs/content-seed/buddy-check.json src/content/buddy-check.json
+cp -R docs/content-seed/templates/* src/content/locales/en/templates/
+cp -R docs/content-seed/templates/* src/content/locales/ru/templates/   # then translate
+cp docs/content-seed/buddy-check.json src/content/locales/en/buddy-check.json
+cp docs/content-seed/buddy-check.json src/content/locales/ru/buddy-check.json   # then translate
+npm run content:assemble
 ```
 
 ## 6. Path alias (optional)
@@ -108,5 +116,5 @@ Add `public/pwa-192x192.png` and `public/pwa-512x512.png` (simple dark placehold
 ## Agent handoff after Phase 1
 
 1. Frontend Engineer — wire `AppView` shell
-2. Checklist Content Agent — review seed templates in `src/content/templates/`
+2. Checklist Content Agent — review seed templates in `src/content/locales/{en,ru}/templates/`
 3. Frontend Engineer — implement `lib/checklist-engine.ts` per `data-model.md`

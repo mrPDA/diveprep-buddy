@@ -1,6 +1,6 @@
 # Content Seed — Checklist Templates
 
-Ready-to-copy templates for Phase 2. **Not runtime code yet** — copy to `src/content/templates/` during scaffold (see `implementation/scaffold.md`).
+Ready-to-copy templates for Phase 2. **Not runtime code yet** — copy to `src/content/locales/{en,ru}/templates/` during scaffold (see `implementation/scaffold.md`). After editing splits, run `npm run content:assemble` so `src/content/content.bundle.json` reflects the change.
 
 ## Files
 

@@ -23,7 +23,7 @@ PWA для подготовки к погружению: контекст → ч
 
 **Phase 1 — Prototype Foundation** (см. `research/task-breakdown.md`).
 
-Следующее действие: выполнить `implementation/scaffold.md`, затем перенести `content-seed/` → `src/content/templates/`.
+Следующее действие: выполнить `implementation/scaffold.md`, затем перенести `content-seed/` → `src/content/locales/{en,ru}/templates/` и собрать bundle через `npm run content:assemble`.
 
 ## Зафиксированные решения
 
