@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useAppStore } from '@/app/store'
 import { useTranslation } from '@/i18n/useTranslation'
 
 export function OfflineIndicator() {
@@ -26,6 +27,22 @@ export function OfflineIndicator() {
       role="status"
     >
       {t('offline.banner')}
+    </div>
+  )
+}
+
+export function StorageDegradedIndicator() {
+  const { t } = useTranslation()
+  const storageDegraded = useAppStore((s) => s.storageDegraded)
+
+  if (!storageDegraded) return null
+
+  return (
+    <div
+      className="bg-rose-900/90 px-4 py-2 text-center text-sm text-rose-100"
+      role="status"
+    >
+      {t('storage.degraded.banner')}
     </div>
   )
 }

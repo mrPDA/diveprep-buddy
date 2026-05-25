@@ -21,7 +21,7 @@ Pre-dive preparation only: context selection, checklist, buddy-check, local pers
 
 - Read `docs/START-HERE.md` before coding
 - Mobile-first; large tap targets
-- Checklist seed: `docs/content-seed/` → copy to `src/content/templates/`
+- Checklist seed: `docs/content-seed/` → copy to `src/content/locales/{en,ru}/templates/`, then `npm run content:assemble`. Never edit `src/content/content.bundle.json` directly.
 - Checklist engine reference: `docs/implementation/checklist-engine-reference.ts`
 - **Testing**: `docs/testing-policy.md` — `npm run verify` after content/logic changes
 - Log agent decisions in `agent-runs/` when changing UX or scope

@@ -29,7 +29,7 @@ Agents for **building** the MVP.
 ## Principles
 
 1. MVP scope from `docs/research/task-breakdown.md` is default.
-2. Checklist logic in `src/content/templates/`, not UI components.
+2. Checklist content in `src/content/locales/{en,ru}/templates/` (split files; bundle is generated via `npm run content:assemble`), not UI components.
 3. Security & Safety before any public deploy.
 4. Log decisions in `agent-runs/` **only on user request**.
 5. **Persistent memory**: every agent attaches to n4l at session start (`notes_attach` → `notes_resume_context`) and saves a `notes_handoff_save` before ending. Full workflow: [`docs/notesforllm-workflow.md`](../docs/notesforllm-workflow.md).

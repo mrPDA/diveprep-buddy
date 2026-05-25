@@ -57,11 +57,12 @@ npm run preview
 ## Must
 
 - Follow `docs/implementation/data-model.md` for types
-- Use seed templates from `docs/content-seed/` → `src/content/templates/`
+- Use seed templates from `docs/content-seed/` → `src/content/locales/{en,ru}/templates/`
 - Copy `docs/implementation/checklist-engine-reference.ts` → `src/lib/checklist-engine.ts`
 - Mobile-first; large tap targets; dark high-contrast theme
 - Disclaimer from `docs/implementation/safety-copy.md`
 - **Testing**: read `docs/testing-policy.md`; run `npm run verify` before handoff; add lean tests for new logic
+- **Content copy**: edit only the split files under `src/content/locales/{en,ru}/` and `src/content/{app-meta,locales.config}.json`. `src/content/content.bundle.json` is **generated** by `npm run content:assemble` and direct edits will be overwritten on next assemble / Admin Studio save. After editing splits, run `npm run content:assemble` so the bundle reflects the change.
 - Save agent summaries to `agent-runs/` when requested
 
 ## Never
@@ -82,5 +83,7 @@ src/features/{context,checklist,buddy-check,summary}/
 src/components/ui/
 src/lib/checklist-engine.ts
 src/lib/storage/
-src/content/templates/
+src/content/locales/{en,ru}/        # source of truth for UI copy + templates
+src/content/{app-meta,locales.config}.json
+src/content/content.bundle.json     # generated — do not edit directly
 ```

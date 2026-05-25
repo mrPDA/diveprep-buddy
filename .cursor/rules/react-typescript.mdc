@@ -15,7 +15,7 @@ React 18+, TypeScript, Tailwind CSS, Vite. State: Zustand or colocated React sta
 - `src/features/{context,checklist,buddy-check}/` — feature modules
 - `src/components/ui/` — shared presentational components
 - `src/lib/` — storage, checklist engine helpers
-- `src/content/templates/` — checklist template data
+- `src/content/locales/{en,ru}/templates/` — checklist template data (split files; assembled into `src/content/content.bundle.json` via `npm run content:assemble`)
 
 ## Patterns
 

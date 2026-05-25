@@ -66,7 +66,7 @@
 
 ## Контент чек-листов
 
-Шаблоны → `src/content/templates/` (через bundle).
+Шаблоны — split-файлы в `src/content/locales/{en,ru}/templates/`; после правок прогоните `npm run content:assemble`, чтобы пересобрать `src/content/content.bundle.json`. Прямые правки в `content.bundle.json` будут перезаписаны при следующей сборке или через Admin Studio.
 Сидовые материалы — `docs/content-seed/`.
 Перед изменением content — [`docs/implementation/data-model.md`](docs/implementation/data-model.md).
 

@@ -38,7 +38,7 @@ Target time: **1–3 minutes**.
 ### Phase 2 — Checklist engine
 
 - [ ] Types from `data-model.md` implemented
-- [ ] Seed templates loaded from `src/content/templates/`
+- [ ] Seed templates loaded from `src/content/locales/{en,ru}/templates/` (assembled into `content.bundle.json` via `npm run content:assemble`)
 - [ ] `composeChecklist(context)` merges templates, dedupes by `id`
 - [ ] Unit-testable pure function (no React in engine)
 

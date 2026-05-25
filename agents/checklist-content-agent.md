@@ -16,7 +16,7 @@ Author and maintain dive-preparation checklist templates and the rule-based merg
 - `docs/content-seed/templates/` and `docs/implementation/data-model.md`
 - `docs/research/feature-spec.md`, `docs/research/ux-flow.md`
 - Real diver/instructor feedback (when available)
-- Existing templates in `src/content/templates/`
+- Existing templates in `src/content/locales/{en,ru}/templates/` (source of truth; bundle is generated via `npm run content:assemble`)
 
 ## Output
 

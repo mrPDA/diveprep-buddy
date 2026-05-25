@@ -4,7 +4,10 @@ import { DisclaimerModal } from '@/components/ui/DisclaimerBanner'
 import { IconButton } from '@/components/ui/IconButton'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 import { SunlightToggle } from '@/components/ui/SunlightToggle'
-import { OfflineIndicator } from '@/components/ui/OfflineIndicator'
+import {
+  OfflineIndicator,
+  StorageDegradedIndicator,
+} from '@/components/ui/OfflineIndicator'
 import { isAdminEnabled } from '@/lib/env'
 import { useContentStore } from '@/lib/content/store'
 import { useTranslation } from '@/i18n/useTranslation'
@@ -64,6 +67,7 @@ function AppShell() {
     <>
       <div className="app-safe-shell mx-auto flex min-h-dvh max-w-lg flex-col">
         <OfflineIndicator />
+        <StorageDegradedIndicator />
         <header className="mb-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-sky-400">

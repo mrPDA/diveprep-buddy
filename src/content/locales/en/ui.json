@@ -86,6 +86,11 @@
   "offline": {
     "banner": "Offline mode active. Your checklists still work on this device."
   },
+  "storage": {
+    "degraded": {
+      "banner": "Local storage unavailable. Your progress will not be saved between sessions."
+    }
+  },
   "admin": {
     "title": "Content admin",
     "subtitle": "Edit texts on this device. Export JSON to commit to the repo.",
