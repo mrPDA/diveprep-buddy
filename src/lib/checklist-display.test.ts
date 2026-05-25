@@ -33,8 +33,9 @@ describe('isRentalChecklistItem', () => {
     expect(isRentalChecklistItem('rental-mask-condition')).toBe(true)
   })
 
-  it('excludes travel template rental-plan', () => {
-    expect(isRentalChecklistItem('rental-plan')).toBe(false)
+  it('excludes non-rental ids', () => {
+    expect(isRentalChecklistItem('mask')).toBe(false)
+    expect(isRentalChecklistItem('passport-docs')).toBe(false)
   })
 })
 
@@ -43,7 +44,7 @@ describe('getRentalChecklistItems', () => {
     const items = [
       item('mask'),
       item('rental-mask-condition'),
-      item('rental-plan'),
+      item('passport-docs'),
     ]
     expect(getRentalChecklistItems(items).map((i) => i.id)).toEqual([
       'rental-mask-condition',
