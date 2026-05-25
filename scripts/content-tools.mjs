@@ -50,7 +50,7 @@ function templatesForLocale(locale) {
 }
 
 function assembleBundle() {
-  const bundle = {
+  const next = {
     version: 1,
     updatedAt: new Date().toISOString(),
     appMeta: readJson(appMetaPath),
@@ -68,8 +68,22 @@ function assembleBundle() {
       },
     },
   }
-  validateBundle(bundle)
-  writeJson(bundlePath, bundle)
+  validateBundle(next)
+
+  // Idempotent: keep prior updatedAt (and skip the write) when the content
+  // is unchanged. This prevents `npm run verify` (which runs the content-tools
+  // test that invokes assemble) from producing a phantom diff on every run.
+  if (existsSync(bundlePath)) {
+    const prev = readJson(bundlePath)
+    const { updatedAt: _prevTs, ...prevRest } = prev
+    const { updatedAt: _nextTs, ...nextRest } = next
+    if (JSON.stringify(prevRest) === JSON.stringify(nextRest)) {
+      console.log(`Bundle unchanged, kept ${bundlePath}`)
+      return
+    }
+  }
+
+  writeJson(bundlePath, next)
   console.log(`Wrote ${bundlePath}`)
 }
 
