@@ -9,11 +9,6 @@
       "critical": true
     },
     {
-      "id": "dive-insurance-travel",
-      "label": "Страховка для дайвинга действует в стране назначения",
-      "category": "documents"
-    },
-    {
       "id": "adapter",
       "label": "Адаптер для зарядных устройств",
       "category": "travel"
@@ -22,11 +17,6 @@
       "id": "reg-service",
       "label": "Регулятор / снаряжение обслужено перед поездкой",
       "category": "core-gear"
-    },
-    {
-      "id": "rental-plan",
-      "label": "Уточнить план: аренда или своё снаряжение",
-      "category": "travel"
     },
     {
       "id": "local-rules",

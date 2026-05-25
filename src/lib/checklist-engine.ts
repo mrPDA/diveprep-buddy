@@ -32,9 +32,9 @@ export function resolveTemplateIds(context: DiveContext): string[] {
   return ids
 }
 
-/** Item ids from the `rental` template (excludes travel template `rental-plan`). */
+/** Item ids from the `rental` template — all share the `rental-` prefix. */
 export function isRentalChecklistItem(itemId: string): boolean {
-  return itemId.startsWith('rental-') && itemId !== 'rental-plan'
+  return itemId.startsWith('rental-')
 }
 
 export function composeChecklist(

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-24T22:19:32.460Z",
+  "updatedAt": "2026-05-25T10:10:35.804Z",
   "appMeta": {
     "name": "DivePrep Buddy",
     "shortName": "DivePrep",
@@ -462,11 +462,6 @@
               "critical": true
             },
             {
-              "id": "dive-insurance-travel",
-              "label": "Dive insurance valid for destination",
-              "category": "documents"
-            },
-            {
               "id": "adapter",
               "label": "Power adapter for chargers",
               "category": "travel"
@@ -475,11 +470,6 @@
               "id": "reg-service",
               "label": "Regulator / gear serviced before trip",
               "category": "core-gear"
-            },
-            {
-              "id": "rental-plan",
-              "label": "Confirm rental vs own gear plan",
-              "category": "travel"
             },
             {
               "id": "local-rules",
@@ -1029,11 +1019,6 @@
               "critical": true
             },
             {
-              "id": "dive-insurance-travel",
-              "label": "Страховка для дайвинга действует в стране назначения",
-              "category": "documents"
-            },
-            {
               "id": "adapter",
               "label": "Адаптер для зарядных устройств",
               "category": "travel"
@@ -1042,11 +1027,6 @@
               "id": "reg-service",
               "label": "Регулятор / снаряжение обслужено перед поездкой",
               "category": "core-gear"
-            },
-            {
-              "id": "rental-plan",
-              "label": "Уточнить план: аренда или своё снаряжение",
-              "category": "travel"
             },
             {
               "id": "local-rules",

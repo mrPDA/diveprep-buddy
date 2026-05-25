@@ -1,6 +1,6 @@
 # Master Prompt — Unattended MVP Build
 
-Copy everything below into a **new Cursor Agent chat** with workspace `/Users/denispukinov/diveprep-buddy`.
+Copy everything below into a **new Cursor Agent chat** with the repository root as the workspace.
 
 ---
 
