@@ -208,8 +208,8 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   acceptDisclaimer: async () => {
     const acceptedAt = new Date().toISOString()
-    await savePreferences({ disclaimerAcceptedAt: acceptedAt })
     set({ disclaimerAcceptedAt: acceptedAt })
+    await savePreferences({ disclaimerAcceptedAt: acceptedAt })
   },
 
   startNewPreparation: () => {

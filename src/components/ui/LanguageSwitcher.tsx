@@ -1,4 +1,11 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from 'react'
 import { useAppStore } from '@/app/store'
 import { LOCALE_LABELS, SUPPORTED_LOCALES, type Locale } from '@/i18n/types'
 import { useTranslation } from '@/i18n/useTranslation'
@@ -53,7 +60,12 @@ export function LanguageSwitcher() {
   const setLocale = useAppStore((s) => s.setLocale)
   const { t } = useTranslation()
   const [open, setOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(() =>
+    Math.max(0, SUPPORTED_LOCALES.indexOf(locale)),
+  )
   const rootRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const optionRefs = useRef<Array<HTMLButtonElement | null>>([])
   const listId = useId()
 
   useEffect(() => {
@@ -65,31 +77,88 @@ export function LanguageSwitcher() {
       }
     }
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-
     document.addEventListener('pointerdown', onPointerDown)
-    document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('pointerdown', onPointerDown)
-      document.removeEventListener('keydown', onKeyDown)
     }
   }, [open])
+
+  const listRef = useCallback(
+    (el: HTMLUListElement | null) => {
+      if (el) {
+        optionRefs.current[activeIndex]?.focus()
+      }
+    },
+    [activeIndex],
+  )
 
   const selectLocale = (code: Locale) => {
     setLocale(code)
     setOpen(false)
+    triggerRef.current?.focus()
+  }
+
+  const openMenu = (index: number) => {
+    setOpen(true)
+    setActiveIndex(index)
+  }
+
+  const moveActive = (delta: number) => {
+    const last = SUPPORTED_LOCALES.length - 1
+    const next = Math.min(last, Math.max(0, activeIndex + delta))
+    setActiveIndex(next)
+    optionRefs.current[next]?.focus()
+  }
+
+  const onTriggerKeyDown = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      openMenu(Math.max(0, SUPPORTED_LOCALES.indexOf(locale)))
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      openMenu(SUPPORTED_LOCALES.length - 1)
+    }
+  }
+
+  const onListKeyDown = (event: ReactKeyboardEvent<HTMLUListElement>) => {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault()
+        moveActive(1)
+        break
+      case 'ArrowUp':
+        event.preventDefault()
+        moveActive(-1)
+        break
+      case 'Home':
+        event.preventDefault()
+        moveActive(-SUPPORTED_LOCALES.length)
+        break
+      case 'End':
+        event.preventDefault()
+        moveActive(SUPPORTED_LOCALES.length)
+        break
+      case 'Escape':
+        event.preventDefault()
+        setOpen(false)
+        triggerRef.current?.focus()
+        break
+      case 'Tab':
+        setOpen(false)
+        break
+    }
   }
 
   return (
     <div ref={rootRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
         onClick={() => setOpen((value) => !value)}
+        onKeyDown={onTriggerKeyDown}
         className={[
           'flex min-h-11 items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition-colors',
           'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400',
@@ -111,21 +180,27 @@ export function LanguageSwitcher() {
           ].join(' ')}
         >
           <ul
+            ref={listRef}
             id={listId}
             role="listbox"
             aria-label={t('language.label')}
-            aria-activedescendant={`${listId}-${locale}`}
+            aria-activedescendant={`${listId}-${SUPPORTED_LOCALES[activeIndex]}`}
+            onKeyDown={onListKeyDown}
             className="overflow-hidden rounded-xl border border-slate-600 bg-slate-800 py-1 shadow-xl shadow-black/50 ring-1 ring-white/5"
           >
-            {SUPPORTED_LOCALES.map((code) => {
+            {SUPPORTED_LOCALES.map((code, index) => {
               const selected = code === locale
               return (
                 <li key={code} role="presentation">
                   <button
+                    ref={(el) => {
+                      optionRefs.current[index] = el
+                    }}
                     id={`${listId}-${code}`}
                     type="button"
                     role="option"
                     aria-selected={selected}
+                    tabIndex={index === activeIndex ? 0 : -1}
                     onClick={() => selectLocale(code)}
                     className={[
                       'flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-base transition-colors',

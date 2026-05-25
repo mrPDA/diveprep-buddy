@@ -13,6 +13,7 @@ Agents for **building** the MVP.
 | UX Implementation | `ux-implementation-agent.md` | Screens from ux-flow.md |
 | Mobile Viewport | `mobile-viewport-agent.md` | Safe area, notches, PWA layout, touch targets |
 | Test Engineer | `test-engineer-agent.md` | **Auto at session end**: verify, audit, write/prune tests |
+| Code Reviewer | `code-reviewer-agent.md` | Structured review of diff/scope: correctness, safety, tests, architecture |
 | QA | `qa-agent.md` | Manual matrix (mobile/offline); sign-off after verify green |
 | Habr Article | `habr-article-agent.md` | Черновик статьи на Хабр для привлечения бета-тестеров (артефакты — в `article/`, gitignored) |
 

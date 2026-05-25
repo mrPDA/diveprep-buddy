@@ -9,11 +9,11 @@
 ## TL;DR — три обязательных вызова
 
 ```text
-START   →  notes_attach()                 # 1 раз в начале сессии
-START   →  notes_resume_context()         # сразу после attach
-DURING  →  notes_checkpoint_save(...)     # после крупных шагов
-DURING  →  notes_decision_save(...)       # при выборе, влияющем на >1 файл
-END     →  notes_handoff_save(...)        # перед завершением сессии
+START   →  notes_attach({cwd: "<workspace>"})  # ВСЕГДА с явным cwd
+START   →  notes_resume_context()              # сразу после attach
+DURING  →  notes_checkpoint_save(...)          # после крупных шагов
+DURING  →  notes_decision_save(...)            # при выборе, влияющем на >1 файл
+END     →  notes_handoff_save(...)             # перед завершением сессии
 ```
 
 После `notes_attach` все последующие вызовы автоматически подставляют `space_id`, `task_id`, `session_id` — указывать их вручную не нужно.
@@ -22,18 +22,25 @@ END     →  notes_handoff_save(...)        # перед завершением 
 
 ## 1. START — привязка сессии
 
-### 1.1 `notes_attach()`
+### 1.1 `notes_attach({cwd: "<workspace root>"})`
 
-Первый вызов в любой нетривиальной сессии. Без аргументов.
+Первый вызов в любой нетривиальной сессии. **Всегда передавай `cwd` явно** — абсолютный путь корня workspace'а.
 
 Что делает:
 
-- Находит `.notesforllm.toml` (walk up от cwd).
+- Находит `.notesforllm.toml` (walk up от `cwd`).
 - Резолвит `space_id` (создаёт, если нет).
 - Резолвит `task_id` из текущей git-ветки (стратегия `branch`). Для веток из `default_branches` (`main`, `master`) task_id = имя ветки.
 - Создаёт `session_id` (timestamp).
 
 Возвращает: `{ space_id, space_slug, task_id, session_id, config_path }`.
+
+**Зачем явный `cwd`**: MCP-сервер `notesforllm` запускается глобально и его `process.cwd()` — это не корень твоего проекта, а директория самого сервера (где у него лежит **собственный** dev-конфиг `.notesforllm.toml`). Без явного `cwd` walk-up найдёт чужой конфиг и привяжет тебя к чужому space — `resume_context` вернёт нерелевантную историю. **Всегда** проверяй в ответе:
+
+- `space_slug == "diveprep-buddy"`
+- `config_path` указывает на `<workspace>/.notesforllm.toml`
+
+Если нет — повтори вызов с явным `cwd`.
 
 ### 1.2 `notes_resume_context()`
 
@@ -186,7 +193,7 @@ files_in_play:      пути файлов, которые трогали
 ## 6. Минимальный пример сессии
 
 ```text
-1. notes_attach()
+1. notes_attach({cwd: "/Users/<you>/diveprep-buddy"})
 2. notes_resume_context()
    → читаем synthesis.last_handoff_next_step и exact_next_command
 3. (работа: реализуем фичу)
