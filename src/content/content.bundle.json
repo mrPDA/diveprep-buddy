@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-24T22:19:32.460Z",
+  "updatedAt": "2026-05-25T11:05:42.623Z",
   "appMeta": {
     "name": "DivePrep Buddy",
     "shortName": "DivePrep",
@@ -110,6 +110,11 @@
         },
         "offline": {
           "banner": "Offline mode active. Your checklists still work on this device."
+        },
+        "storage": {
+          "degraded": {
+            "banner": "Local storage unavailable. Your progress will not be saved between sessions."
+          }
         },
         "admin": {
           "title": "Content admin",
@@ -677,6 +682,11 @@
         },
         "offline": {
           "banner": "Офлайн-режим. Чеклисты работают на этом устройстве."
+        },
+        "storage": {
+          "degraded": {
+            "banner": "Локальное хранилище недоступно. Прогресс не сохранится между сессиями."
+          }
         },
         "admin": {
           "title": "Редактор контента",

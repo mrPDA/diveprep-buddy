@@ -52,8 +52,9 @@ Then save `notes_test_run_checkpoint(...)` in n4l with suite result.
 3. **Test behavior, not implementation** — public outputs, not private helpers.
 4. **Delete** tests when feature or file is removed.
 5. **Consolidate** when audit reports duplicate scenario names or >3 tests for one function.
-6. **Budget**: aim **≤ 60** `it()` blocks project-wide; **> 80** requires Test Engineer review and justification in `notes_decision_save`.
+6. **Budget**: aim **≤ 70** `it()` blocks project-wide; **> 90** requires Test Engineer review and justification in `notes_decision_save`.
 7. **Safety tests are sacred** — never delete to “reduce count”; refactor assertions only.
+8. **Whitelist for thin wrappers**: modules that only re-export, clone bundles, or hold type aliases can be added to `UNTESTED_MODULE_WHITELIST` in `scripts/test-audit.mjs`. They must be covered by an integration test (e.g. `content-bundle.test.ts`).
 
 Run audit:
 

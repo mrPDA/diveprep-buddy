@@ -8,6 +8,7 @@ import {
   clearStoredSession,
   getPreferences,
   getStoredSession,
+  onStorageError,
   savePreferences,
   saveStoredSession,
 } from '@/lib/storage/db'
@@ -36,6 +37,8 @@ interface AppState {
   buddyCheck: BuddyCheckSession
   disclaimerAcceptedAt: string | undefined
   sunlightMode: boolean
+  storageDegraded: boolean
+  markStorageDegraded: () => void
   setView: (view: AppView) => void
   setLocale: (locale: Locale) => void
   setSunlightMode: (enabled: boolean) => void
@@ -90,6 +93,11 @@ export const useAppStore = create<AppState>((set, get) => ({
   buddyCheck: emptyBuddyCheck(),
   disclaimerAcceptedAt: undefined,
   sunlightMode: false,
+  storageDegraded: false,
+
+  markStorageDegraded: () => {
+    if (!get().storageDegraded) set({ storageDegraded: true })
+  },
 
   setView: (view) => set({ view }),
 
@@ -278,3 +286,9 @@ export const useAppStore = create<AppState>((set, get) => ({
 export function useBuddyCheckSteps() {
   return useAppStore((s) => getBuddyCheckSteps(s.locale))
 }
+
+// Bridge IndexedDB failures from the storage layer into the app store.
+// Subscribed once at module load so any component can observe `storageDegraded`.
+onStorageError(() => {
+  useAppStore.getState().markStorageDegraded()
+})

@@ -29,10 +29,37 @@ class DivePrepDatabase extends Dexie {
 
 export const db = new DivePrepDatabase()
 
+export type StorageErrorListener = (op: string, error: unknown) => void
+
+const storageErrorListeners: Set<StorageErrorListener> = new Set()
+
+/** Subscribe to IndexedDB failures. Returns an unsubscribe callback. */
+export function onStorageError(listener: StorageErrorListener): () => void {
+  storageErrorListeners.add(listener)
+  return () => storageErrorListeners.delete(listener)
+}
+
+/** Test-only: drop all subscribers to keep cases isolated. */
+export function __resetStorageErrorListeners(): void {
+  storageErrorListeners.clear()
+}
+
+function notifyStorageError(op: string, error: unknown): void {
+  console.warn(`[storage] ${op} failed:`, error)
+  for (const listener of storageErrorListeners) {
+    try {
+      listener(op, error)
+    } catch (listenerError) {
+      console.warn('[storage] listener threw', listenerError)
+    }
+  }
+}
+
 /**
  * Wrap a Dexie call so that IndexedDB failures (Safari Private Mode, quota,
- * corrupt DB) never escape as unhandled rejections and are visible in logs.
- * Writes return `undefined` on failure; reads return the provided fallback.
+ * corrupt DB) never escape as unhandled rejections, are visible in logs,
+ * and reach subscribers (e.g. UI banner).
+ * Writes are silent on failure; reads return the provided fallback.
  */
 async function safeStorageRead<T>(
   op: string,
@@ -42,7 +69,7 @@ async function safeStorageRead<T>(
   try {
     return await fn()
   } catch (error) {
-    console.warn(`[storage] ${op} failed:`, error)
+    notifyStorageError(op, error)
     return fallback
   }
 }
@@ -54,7 +81,7 @@ async function safeStorageWrite(
   try {
     await fn()
   } catch (error) {
-    console.warn(`[storage] ${op} failed:`, error)
+    notifyStorageError(op, error)
   }
 }
 
